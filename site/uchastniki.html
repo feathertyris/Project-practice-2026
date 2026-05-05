@@ -130,20 +130,31 @@
             line-height: 1.3;
         }
 
-        /* Секция руководителя */
-        .leader-section {
+        /* Единые стили для всех секций - везде одинаковые отступы и границы */
+        .card-section {
             padding: 1rem 1.5rem;
-            background: #ffffff;
             border-bottom: 1px solid #f0f4f8;
         }
 
-        .leader-label {
+            /* Последняя секция не имеет нижней границы */
+            .card-section:last-child {
+                border-bottom: none;
+            }
+
+        .section-label {
             font-size: 0.7rem;
             text-transform: uppercase;
             letter-spacing: 1px;
             font-weight: 600;
+            margin-bottom: 0.6rem;
+        }
+
+        .section-label-blue {
             color: #4c9fcf;
-            margin-bottom: 0.4rem;
+        }
+
+        .section-label-gray {
+            color: #8ba0b0;
         }
 
         .leader-name {
@@ -151,21 +162,6 @@
             font-weight: 600;
             color: #2c5a7a;
             line-height: 1.4;
-        }
-
-        /* Секция участников и их вклада */
-        .members-section {
-            padding: 1rem 1.5rem;
-            border-bottom: 1px solid #f0f4f8;
-        }
-
-        .members-label {
-            font-size: 0.7rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            font-weight: 600;
-            color: #8ba0b0;
-            margin-bottom: 0.6rem;
         }
 
         .members-list {
@@ -198,21 +194,6 @@
                 color: #1a3b5d;
             }
 
-        /* Секция навыков (технологий) */
-        .skills-section {
-            padding: 1rem 1.5rem;
-            border-bottom: 1px solid #f0f4f8;
-        }
-
-        .skills-label {
-            font-size: 0.7rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            font-weight: 600;
-            color: #8ba0b0;
-            margin-bottom: 0.6rem;
-        }
-
         .skills-list {
             display: flex;
             flex-wrap: wrap;
@@ -228,13 +209,6 @@
             color: #4c9fcf;
         }
 
-        /* Зона ответственности */
-        .extra-block {
-            padding: 1rem 1.5rem 1.2rem;
-            background: #ffffff;
-            flex: 1;
-        }
-
         .extra-item {
             font-size: 0.85rem;
             color: #5a6e7e;
@@ -244,6 +218,11 @@
             .extra-item strong {
                 color: #1a3b5d;
             }
+
+        /* Пустая заглушка для секций, которые нужно сохранить для единообразия */
+        .empty-section {
+            min-height: 1px;
+        }
 
         /* Футер */
         .team-footer {
@@ -298,10 +277,7 @@
                 font-size: 1rem;
             }
 
-            .leader-section,
-            .members-section,
-            .skills-section,
-            .extra-block {
+            .card-section {
                 padding: 0.8rem 1.2rem;
             }
         }
@@ -333,12 +309,12 @@
                         <span class="role-icon">🤝</span>
                         <span class="role-title">Внешние коммуникации</span>
                     </div>
-                    <div class="leader-section">
-                        <div class="leader-label">Руководитель</div>
+                    <div class="card-section">
+                        <div class="section-label section-label-blue">Руководитель</div>
                         <div class="leader-name">Фарафонов Максим</div>
                     </div>
-                    <div class="members-section">
-                        <div class="members-label">Участники и вклад</div>
+                    <div class="card-section">
+                        <div class="section-label section-label-gray">Участники и вклад</div>
                         <div class="members-list">
                             <span class="member-tag">Груздев Дмитрий</span>
                             <span class="member-tag">Сомова Ксения</span>
@@ -348,15 +324,15 @@
                             <strong>Вклад:</strong> руководство интеграцией, связь с руководством СПП, организация видеоконференций
                         </div>
                     </div>
-                    <div class="skills-section">
-                        <div class="skills-label">Компетенции</div>
+                    <div class="card-section">
+                        <div class="section-label section-label-gray">Компетенции</div>
                         <div class="skills-list">
                             <span class="skill-tag">Переговоры</span>
                             <span class="skill-tag">Взаимодействие с заказчиком</span>
                             <span class="skill-tag">Презентации</span>
                         </div>
                     </div>
-                    <div class="extra-block">
+                    <div class="card-section">
                         <div class="extra-item"><strong>Зона ответственности:</strong> коммуникация с заказчиком, демо-сессии, сбор обратной связи</div>
                     </div>
                 </div>
@@ -367,12 +343,12 @@
                         <span class="role-icon">⚙️</span>
                         <span class="role-title">Backend-разработка</span>
                     </div>
-                    <div class="leader-section">
-                        <div class="leader-label">Руководитель</div>
+                    <div class="card-section">
+                        <div class="section-label section-label-blue">Руководитель</div>
                         <div class="leader-name">Беляев Никита</div>
                     </div>
-                    <div class="members-section">
-                        <div class="members-label">Участники и вклад</div>
+                    <div class="card-section">
+                        <div class="section-label section-label-gray">Участники и вклад</div>
                         <div class="members-list">
                             <span class="member-tag">Куленко Андрей</span>
                             <span class="member-tag">Латорцев Артём</span>
@@ -384,8 +360,8 @@
                             <strong>Вклад:</strong> разработка API, работа с БД, деплой проекта, Telegram-бот, автотестирование, документация, администрирование GitHub
                         </div>
                     </div>
-                    <div class="skills-section">
-                        <div class="skills-label">Стек технологий</div>
+                    <div class="card-section">
+                        <div class="section-label section-label-gray">Стек технологий</div>
                         <div class="skills-list">
                             <span class="skill-tag">Python</span>
                             <span class="skill-tag">Django</span>
@@ -393,7 +369,7 @@
                             <span class="skill-tag">REST API</span>
                         </div>
                     </div>
-                    <div class="extra-block">
+                    <div class="card-section">
                         <div class="extra-item"><strong>Зона ответственности:</strong> серверная логика, базы данных, API эндпоинты</div>
                     </div>
                 </div>
@@ -404,12 +380,12 @@
                         <span class="role-icon">🧪</span>
                         <span class="role-title">Тестирование</span>
                     </div>
-                    <div class="leader-section">
-                        <div class="leader-label">Руководители</div>
+                    <div class="card-section">
+                        <div class="section-label section-label-blue">Руководители</div>
                         <div class="leader-name">Реброва Анастасия, Гусев Артём</div>
                     </div>
-                    <div class="members-section">
-                        <div class="members-label">Участники и вклад</div>
+                    <div class="card-section">
+                        <div class="section-label section-label-gray">Участники и вклад</div>
                         <div class="members-list">
                             <span class="member-tag">Фролова Ксения</span>
                             <span class="member-tag">Паладий Максим</span>
@@ -421,8 +397,8 @@
                             <strong>Вклад:</strong> функциональное тестирование, проверка API (регистрация, авторизация, заявки, запись), тестирование адаптивности ЛК
                         </div>
                     </div>
-                    <div class="skills-section">
-                        <div class="skills-label">Инструменты</div>
+                    <div class="card-section">
+                        <div class="section-label section-label-gray">Инструменты</div>
                         <div class="skills-list">
                             <span class="skill-tag">Postman</span>
                             <span class="skill-tag">Swagger</span>
@@ -430,7 +406,7 @@
                             <span class="skill-tag">Selenium</span>
                         </div>
                     </div>
-                    <div class="extra-block">
+                    <div class="card-section">
                         <div class="extra-item"><strong>Зона ответственности:</strong> функциональное тестирование, регресс, проверка API</div>
                     </div>
                 </div>
@@ -441,12 +417,12 @@
                         <span class="role-icon">📄</span>
                         <span class="role-title">Документация</span>
                     </div>
-                    <div class="leader-section">
-                        <div class="leader-label">Руководитель</div>
+                    <div class="card-section">
+                        <div class="section-label section-label-blue">Руководитель</div>
                         <div class="leader-name">Володина Анастасия</div>
                     </div>
-                    <div class="members-section">
-                        <div class="members-label">Участники и вклад</div>
+                    <div class="card-section">
+                        <div class="section-label section-label-gray">Участники и вклад</div>
                         <div class="members-list">
                             <span class="member-tag">Самойлова Валерия</span>
                             <span class="member-tag">Кудрявцева Валерия</span>
@@ -455,15 +431,15 @@
                             <strong>Вклад:</strong> написание технической документации, отчётов, подготовка иллюстраций для презентации
                         </div>
                     </div>
-                    <div class="skills-section">
-                        <div class="skills-label">Навыки</div>
+                    <div class="card-section">
+                        <div class="section-label section-label-gray">Навыки</div>
                         <div class="skills-list">
                             <span class="skill-tag">Техническая документация</span>
                             <span class="skill-tag">ГОСТ</span>
                             <span class="skill-tag">Markdown</span>
                         </div>
                     </div>
-                    <div class="extra-block">
+                    <div class="card-section">
                         <div class="extra-item"><strong>Зона ответственности:</strong> пояснительная записка, пользовательская документация</div>
                     </div>
                 </div>
@@ -474,12 +450,12 @@
                         <span class="role-icon">🔒</span>
                         <span class="role-title">Информационная безопасность</span>
                     </div>
-                    <div class="leader-section">
-                        <div class="leader-label">Руководитель</div>
+                    <div class="card-section">
+                        <div class="section-label section-label-blue">Руководитель</div>
                         <div class="leader-name">Корвяков Святогор</div>
                     </div>
-                    <div class="members-section">
-                        <div class="members-label">Участники и вклад</div>
+                    <div class="card-section">
+                        <div class="section-label section-label-gray">Участники и вклад</div>
                         <div class="members-list">
                             <span class="member-tag">Пацев Максим</span>
                             <span class="member-tag">Садыков Ростислав</span>
@@ -491,31 +467,31 @@
                             <strong>Вклад:</strong> разработка политик безопасности (конфиденциальность, cookies, персональные данные), анализ уязвимостей, проверка инфраструктуры, подготовка презентаций
                         </div>
                     </div>
-                    <div class="skills-section">
-                        <div class="skills-label">Компетенции</div>
+                    <div class="card-section">
+                        <div class="section-label section-label-gray">Компетенции</div>
                         <div class="skills-list">
                             <span class="skill-tag">Анализ угроз</span>
                             <span class="skill-tag">Шифрование</span>
                             <span class="skill-tag">Безопасность данных</span>
                         </div>
                     </div>
-                    <div class="extra-block">
+                    <div class="card-section">
                         <div class="extra-item"><strong>Зона ответственности:</strong> защита персональных данных, безопасность системы</div>
                     </div>
                 </div>
 
-                <!-- Аналитика (обновлено) -->
+                <!-- Аналитика -->
                 <div class="role-card">
                     <div class="card-header">
                         <span class="role-icon">📊</span>
                         <span class="role-title">Аналитика</span>
                     </div>
-                    <div class="leader-section">
-                        <div class="leader-label">Руководитель</div>
+                    <div class="card-section">
+                        <div class="section-label section-label-blue">Руководитель</div>
                         <div class="leader-name">Красноперов Сергей</div>
                     </div>
-                    <div class="members-section">
-                        <div class="members-label">Участники и вклад</div>
+                    <div class="card-section">
+                        <div class="section-label section-label-gray">Участники и вклад</div>
                         <div class="members-list">
                             <span class="member-tag">Шкуренко Роман</span>
                             <span class="member-tag">Печечян Валерий</span>
@@ -525,31 +501,31 @@
                             <strong>Вклад:</strong> ответы на вопросы СПП, ревью дизайна, проверка выполнения задач отдела, карта сайта/пути пользователя и психолога, изменение логики записи на консультации
                         </div>
                     </div>
-                    <div class="skills-section">
-                        <div class="skills-label">Методологии</div>
+                    <div class="card-section">
+                        <div class="section-label section-label-gray">Методологии</div>
                         <div class="skills-list">
                             <span class="skill-tag">BPMN</span>
                             <span class="skill-tag">UML</span>
                             <span class="skill-tag">User Stories</span>
                         </div>
                     </div>
-                    <div class="extra-block">
+                    <div class="card-section">
                         <div class="extra-item"><strong>Зона ответственности:</strong> анализ требований, моделирование процессов</div>
                     </div>
                 </div>
 
-                <!-- Дизайн (обновлено) -->
+                <!-- Дизайн -->
                 <div class="role-card">
                     <div class="card-header">
                         <span class="role-icon">🎨</span>
                         <span class="role-title">Дизайн</span>
                     </div>
-                    <div class="leader-section">
-                        <div class="leader-label">Руководитель</div>
+                    <div class="card-section">
+                        <div class="section-label section-label-blue">Руководитель</div>
                         <div class="leader-name">Заводун Александр</div>
                     </div>
-                    <div class="members-section">
-                        <div class="members-label">Участники и вклад</div>
+                    <div class="card-section">
+                        <div class="section-label section-label-gray">Участники и вклад</div>
                         <div class="members-list">
                             <span class="member-tag">Фролова Ксения</span>
                             <span class="member-tag">Нилуфар Исматова</span>
@@ -561,15 +537,15 @@
                             <strong>Вклад:</strong> распределение задач, тёмная тема (результаты теста, ЛК психолога, FAQ), доработка ЛК, обработка заявок, сценарии записи на приём, правки страниц, настройки cookie и смены темы, профиль с подтверждением согласия
                         </div>
                     </div>
-                    <div class="skills-section">
-                        <div class="skills-label">Инструменты</div>
+                    <div class="card-section">
+                        <div class="section-label section-label-gray">Инструменты</div>
                         <div class="skills-list">
                             <span class="skill-tag">Figma</span>
                             <span class="skill-tag">UI/UX</span>
                             <span class="skill-tag">Адаптивный дизайн</span>
                         </div>
                     </div>
-                    <div class="extra-block">
+                    <div class="card-section">
                         <div class="extra-item"><strong>Зона ответственности:</strong> дизайн-макеты, прототипирование, UI-kit</div>
                     </div>
                 </div>
@@ -580,12 +556,12 @@
                         <span class="role-icon">🖥️</span>
                         <span class="role-title">Frontend-разработка</span>
                     </div>
-                    <div class="leader-section">
-                        <div class="leader-label">Руководитель</div>
+                    <div class="card-section">
+                        <div class="section-label section-label-blue">Руководитель</div>
                         <div class="leader-name">Романихин Михаил</div>
                     </div>
-                    <div class="members-section">
-                        <div class="members-label">Участники и вклад</div>
+                    <div class="card-section">
+                        <div class="section-label section-label-gray">Участники и вклад</div>
                         <div class="members-list">
                             <span class="member-tag">Волынников Роман</span>
                             <span class="member-tag">Гумашян Давид</span>
@@ -599,8 +575,8 @@
                             <strong>Вклад:</strong> разработка ЛК, модальные окна, тёмная тема, рефакторинг, код-ревью, адаптивная вёрстка, DevOps
                         </div>
                     </div>
-                    <div class="skills-section">
-                        <div class="skills-label">Технологии</div>
+                    <div class="card-section">
+                        <div class="section-label section-label-gray">Технологии</div>
                         <div class="skills-list">
                             <span class="skill-tag">React</span>
                             <span class="skill-tag">TypeScript</span>
@@ -608,17 +584,59 @@
                             <span class="skill-tag">Git</span>
                         </div>
                     </div>
-                    <div class="extra-block">
+                    <div class="card-section">
                         <div class="extra-item"><strong>Зона ответственности:</strong> клиентская логика, адаптивный интерфейс, верстка</div>
+                    </div>
+                </div>
+
+                <!-- Медиа -->
+                <div class="role-card">
+                    <div class="card-header">
+                        <span class="role-icon">📸</span>
+                        <span class="role-title">Медиа</span>
+                    </div>
+                    <div class="card-section">
+                        <div class="section-label section-label-blue">Руководитель</div>
+                        <div class="leader-name">Иващенко София Андреевна</div>
+                    </div>
+                    <div class="card-section">
+                        <div class="section-label section-label-gray">Участники и вклад</div>
+                        <div class="members-list">
+                            <span class="member-tag">Куленко Андрей Петрович</span>
+                            <span class="member-tag">Груздев Дмитрий Александрович</span>
+                            <span class="member-tag">Иващенко София Андреевна</span>
+                            <span class="member-tag">Кудрявцева Валерия Александровна</span>
+                            <span class="member-tag">Петренко Виктория Александровна</span>
+                            <span class="member-tag">Ганута Дарья Ивановна</span>
+                            <span class="member-tag">Рутовская Алиса Антоновна</span>
+                            <span class="member-tag">Володина Анастасия Игоревна</span>
+                            <span class="member-tag">Гусев Артем Олегович</span>
+                        </div>
+                        <div class="contribution-text">
+                            <strong>Вклад:</strong> написание и редактирование постов, фотосъемка, контроль выполнения задач, написание отчета, редактирование и отбор фотографий, сбор информации с пар.
+                        </div>
+                    </div>
+                    <div class="card-section">
+                        <div class="section-label section-label-gray">Компетенции</div>
+                        <div class="skills-list">
+                            <span class="skill-tag">Копирайтинг</span>
+                            <span class="skill-tag">Фотосъемка</span>
+                            <span class="skill-tag">Редактура</span>
+                            <span class="skill-tag">Управление задачами</span>
+                            <span class="skill-tag">SMM</span>
+                        </div>
+                    </div>
+                    <div class="card-section">
+                        <div class="extra-item"><strong>Зона ответственности:</strong> информационное сопровождение проекта, создание контента, фотофиксация, ведение отчетности по медиа-активностям.</div>
                     </div>
                 </div>
             </div>
 
             <!-- Дополнительная информация о командах -->
             <div class="team-footer">
-                🏢 Над проектом работает <strong>9 команд</strong>
+                🏢 Над проектом работает <strong>10 команд</strong>
                 <div class="team-count">
-                    Frontend · Backend · Тестирование · Документация · ИБ · Аналитика · Дизайн · Внешние коммуникации
+                    Frontend · Backend · Тестирование · Документация · ИБ · Аналитика · Дизайн · Внешние коммуникации · Медиа
                 </div>
             </div>
         </main>
