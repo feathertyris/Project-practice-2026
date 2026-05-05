@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Журнал прогресса — Московский Политех</title>
+    <link rel="stylesheet" href="css/main.css" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', system-ui, -apple-system, 'Helvetica Neue', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: #ffffff;
+            line-height: 1.5;
+        }
+
+        .wrapper {
+            width: 100%;
+            min-height: 100vh;
+        }
+
+        /* Шапка */
+        header.container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 5%;
+            border-bottom: 1px solid #eee;
+            flex-wrap: wrap;
+            gap: 1rem;
+            background: #ffffff;
+        }
+
+        .logo {
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+        }
+
+            .logo img {
+                max-height: 60px;
+                width: auto;
+            }
+
+        .main-menu ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .main-menu a {
+            font-weight: 400;
+            transition: color 0.3s;
+            text-decoration: none;
+            color: #000000;
+        }
+
+            .main-menu a:hover {
+                color: #3498db;
+            }
+
+        .content {
+            padding: 2rem 5%;
+        }
+
+        .journal-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .page-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            background: linear-gradient(135deg, #1a3b5d, #2c5a7a);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            border-left: 6px solid #4c9fcf;
+            padding-left: 1.25rem;
+        }
+
+        /* Секция отдела */
+        .department-section {
+            margin-bottom: 2.5rem;
+            background: #ffffff;
+            border-radius: 1.5rem;
+            border: 1px solid #eef2f8;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02), 0 4px 12px rgba(0, 0, 0, 0.03);
+        }
+
+        .department-header {
+            padding: 1.2rem 1.8rem;
+            background: linear-gradient(135deg, #f0f6fb, #ffffff);
+            border-bottom: 3px solid #4c9fcf;
+        }
+
+        .department-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #1a3b5d;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .department-icon {
+            font-size: 1.8rem;
+        }
+
+        .department-desc {
+            padding: 0.8rem 1.8rem;
+            background: #f9fbfd;
+            border-bottom: 1px solid #eef2f8;
+            font-size: 0.9rem;
+            color: #5a6e7e;
+        }
+
+            .department-desc strong {
+                color: #1a3b5d;
+            }
+
+        /* Таблица задач */
+        .tasks-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.85rem;
+        }
+
+            .tasks-table th {
+                text-align: left;
+                padding: 0.8rem 1rem;
+                background: #f8fafd;
+                color: #4c9fcf;
+                font-weight: 600;
+                border-bottom: 1px solid #eef2f8;
+            }
+
+            .tasks-table td {
+                padding: 0.8rem 1rem;
+                border-bottom: 1px solid #f0f4f8;
+                color: #2c3e50;
+                vertical-align: top;
+            }
+
+            .tasks-table tr:last-child td {
+                border-bottom: none;
+            }
+
+        .status-badge {
+            display: inline-block;
+            padding: 0.2rem 0.7rem;
+            border-radius: 50px;
+            font-size: 0.7rem;
+            font-weight: 600;
+        }
+
+        .status-done {
+            background: #e8f5e9;
+            color: #2e7d32;
+        }
+
+        .status-progress {
+            background: #fff3e0;
+            color: #ed6c02;
+        }
+
+        .rating-stars {
+            color: #ffc107;
+            font-size: 0.7rem;
+            letter-spacing: 2px;
+        }
+
+        @media (max-width: 768px) {
+            header.container {
+                flex-direction: column;
+                text-align: center;
+                padding: 1rem 3%;
+            }
+
+            .main-menu ul {
+                justify-content: center;
+            }
+
+            .content {
+                padding: 1.5rem;
+            }
+
+            .page-title {
+                font-size: 1.8rem;
+            }
+
+            .tasks-table th,
+            .tasks-table td {
+                padding: 0.5rem;
+                font-size: 0.75rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <header class="container">
+            <div class="logo">
+                <img src="img/logo.svg" alt="Логотип Московский Политех" />
+            </div>
+            <nav class="main-menu">
+                <ul>
+                    <li><a href="index.html">Главная</a></li>
+                    <li><a href="o-proekte.html">О проекте</a></li>
+                    <li><a href="uchastniki.html">Участники проекта</a></li>
+                    <li><a href="journal.html">Журнал прогресса</a></li>
+                    <li><a href="resources.html">Ресурсы проекта</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <main class="content">
+            <div class="journal-container">
+                <h1 class="page-title"> Журнал прогресса (представлена лишь часть задач) </h1>
+
+                <!-- ==================== АНАЛИТИКА ==================== -->
+                <div class="department-section">
+                    <div class="department-header">
+                        <div class="department-title">
+                            <span class="department-icon">📊</span>
+                            Аналитика
+                        </div>
+                    </div>
+                    <div class="department-desc">
+                        <strong>Общий вклад:</strong> анализ требований заказчика, проектирование пользовательских сценариев, ревью дизайна, изменение бизнес-логики записи на консультации.
+                    </div>
+                    <table class="tasks-table">
+                        <thead>
+                            <tr><th>Задача</th><th>Исполнитель</th><th>Статус</th><th>Сроки</th><th>Оценка</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>Ответ на вопросы СПП</td><td>Шкуренко Роман</td><td><span class="status-badge status-done">✅ Выполнено</span></td><td>03.02.25 - 11.02.25</td><td class="rating-stars">★★★★☆</td></tr>
+                            <tr><td>Ревью дизайна</td><td>Печечян Валерий</td><td><span class="status-badge status-done">✅ Выполнено</span></td><td>09.02.25 - 14.02.25</td><td class="rating-stars">★★★★☆</td></tr>
+                            <tr><td>Карта сайта/Пути пользователя и психолога</td><td>Шкуренко Роман</td><td><span class="status-badge status-progress">🔄 Выполняется</span></td><td>14.02.25 - н.в.</td><td class="rating-stars">★★★★★</td></tr>
+                            <tr><td>Изменение логики записи на консультации</td><td>Печечян Валерий</td><td><span class="status-badge status-done">✅ Выполнено</span></td><td>01.03.25</td><td class="rating-stars">★★★★☆</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- ==================== BACKEND-РАЗРАБОТКА ==================== -->
+                <div class="department-section">
+                    <div class="department-header">
+                        <div class="department-title">
+                            <span class="department-icon">⚙️</span>
+                            Backend-разработка
+                        </div>
+                    </div>
+                    <div class="department-desc">
+                        <strong>Общий вклад:</strong> разработка API, работа с БД, деплой проекта, Telegram-бот, автотестирование, написание документации, администрирование GitHub, решение багов, DevOps.
+                    </div>
+                    <table class="tasks-table">
+                        <thead>
+                            <tr><th>Задача</th><th>Исполнитель</th><th>Статус</th><th>Сроки</th><th>Оценка</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>Переписывание авторизации в эндпоинтах</td><td>Куленко Андрей</td><td><span class="status-badge status-done">✅ Выполнено</span></td><td>10.02.25 - 17.02.25</td><td class="rating-stars">★★★★☆</td></tr>
+                            <tr><td>Реализовать метод получения пользователя по токену</td><td>Куленко Андрей</td><td><span class="status-badge status-done">✅ Выполнено</span></td><td>10.02.25 - 24.02.25</td><td class="rating-stars">★★★☆☆</td></tr>
+                            <tr><td>Задеплоить проект</td><td>Латорцев Артём</td><td><span class="status-badge status-done">✅ Выполнено</span></td><td>17.02.25 - 24.02.25</td><td class="rating-stars">★★★☆☆</td></tr>
+                            <tr><td>Написание документации для бэкенда</td><td>Самойлова Валерия</td><td><span class="status-badge status-done">✅ Выполнено</span></td><td>03.02.25 - 17.02.25</td><td class="rating-stars">★★★★★</td></tr>
+                            <tr><td>Функция "запомнить меня"</td><td>Куленко Андрей</td><td><span class="status-badge status-done">✅ Выполнено</span></td><td>19.03.25 - 23.04.25</td><td class="rating-stars">★★★★★</td></tr>
+                            <tr><td>Изменить систему ролей</td><td>Куленко Андрей</td><td><span class="status-badge status-progress">🔄 Выполняется</span></td><td>23.04.25 - 14.05.25</td><td class="rating-stars">★★★★★</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- ==================== ФРОНТЕНД-РАЗРАБОТКА (без колонки "Оценка работы") ==================== -->
+                <div class="department-section">
+                    <div class="department-header">
+                        <div class="department-title">
+                            <span class="department-icon">🖥️</span>
+                            Frontend-разработка
+                        </div>
+                    </div>
+                    <div class="department-desc">
+                        <strong>Общий вклад:</strong> разработка личного кабинета, модальные окна, тёмная тема, рефакторинг, код-ревью, адаптивная вёрстка, DevOps, карточка психолога, разработка новостей, доработка футера и гамбургер-меню.
+                    </div>
+                    <table class="tasks-table">
+                        <thead>
+                            <tr><th>Задача</th><th>Исполнитель</th><th>Статус</th><th>Сроки</th><th>Оценка</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>Кодревью</td><td>Волынников Роман</td><td><span class="status-badge status-done">✅ Выполнено</span></td><td>02.02.26 - 16.03.26</td><td class="rating-stars">★★★★★</td></tr>
+                            <tr><td>Разработка ЛК</td><td>Волынников Роман, Реунин Сергей, Кушжетеров Ибрагим</td><td><span class="status-badge status-done">✅ Выполнено</span></td><td>23.02.26 - 09.03.26</td><td class="rating-stars">★★★★★</td></tr>
+                            <tr><td>Ответственный за GitHub</td><td>Волынников Роман</td><td><span class="status-badge status-done">✅ Выполнено</span></td><td>09.02.26 - 16.03.26</td><td class="rating-stars">★★★☆☆</td></tr>
+                            <tr><td>Руководство отделом / DevOps</td><td>Романихин Михаил</td><td><span class="status-badge status-done">✅ Выполнено</span></td><td>02.02.26 - 16.03.26</td><td class="rating-stars">★★★★★</td></tr>
+                            <tr><td>Тёмная тема</td><td>Зарубин Дмитрий, Якунин Егор</td><td><span class="status-badge status-done">✅ Выполнено</span></td><td>02.03.26 - 23.03.26</td><td class="rating-stars">★★★☆☆</td></tr>
+                            <tr><td>Модальные окна</td><td>Зарубин Дмитрий</td><td><span class="status-badge status-done">✅ Выполнено</span></td><td>16.02.26 - 23.03.26</td><td class="rating-stars">★★☆☆☆</td></tr>
+                            <tr><td>Карточка психолога</td><td>Реунин Сергей</td><td><span class="status-badge status-done">✅ Выполнено</span></td><td>19.01.26 - 26.01.26</td><td class="rating-stars">★★★★☆</td></tr>
+                            <tr><td>Кнопка наверх</td><td>Якунин Егор</td><td><span class="status-badge status-done">✅ Выполнено</span></td><td>16.02.26 - 23.02.26</td><td class="rating-stars">★★☆☆☆</td></tr>
+                            <tr><td>Разработка новостей</td><td>Гумашян Давид, Жемчугов Алексей</td><td><span class="status-badge status-done">✅ Выполнено</span></td><td>16.02.26 - 23.03.26</td><td class="rating-stars">★★★★☆</td></tr>
+                            <tr><td>Доработка футера</td><td>Гумашян Давид</td><td><span class="status-badge status-done">✅ Выполнено</span></td><td>23.02.26 - 02.03.26</td><td class="rating-stars">★★☆☆☆</td></tr>
+                            <tr><td>Доработка гамбургер-меню</td><td>Жемчугов Алексей</td><td><span class="status-badge status-done">✅ Выполнено</span></td><td>16.02.26 - 23.02.26</td><td class="rating-stars">★★☆☆☆</td></tr>
+                            <tr><td>Правка орфографии</td><td>Кушжетеров Ибрагим</td><td><span class="status-badge status-done">✅ Выполнено</span></td><td>16.03.26 - 23.03.26</td><td class="rating-stars">★★☆☆☆</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- ==================== ТЕСТИРОВАНИЕ ==================== -->
+                <div class="department-section">
+                    <div class="department-header">
+                        <div class="department-title">
+                            <span class="department-icon">🧪</span>
+                            Тестирование
+                        </div>
+                    </div>
+                    <div class="department-desc">
+                        <strong>Общий вклад:</strong> функциональное тестирование фронтенда и бэкенда, проверка API (регистрация, авторизация, заявки, запись), тестирование адаптивности ЛК, составление чек-листов, тестирование карточки психолога, каталога, FAQ, полезных материалов.
+                    </div>
+                    <table class="tasks-table">
+                        <thead>
+                            <tr><th>Задача</th><th>Исполнитель</th><th>Статус</th><th>Сроки</th><th>Оценка</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>Составление стратегии тестирования</td><td>Гусев Артём</td><td><span class="status-badge status-done">✅ Выполнено</span></td><td>01.02.26 - 20.02.26</td><td class="rating-stars">★★★★★</td></tr>
+                            <tr><td>FAQ (планшетная версия)</td><td>Фролова Ксения</td><td><span class="status-badge status-done">✅ Выполнено</span></td><td>21.02.26 - 25.02.26</td><td class="rating-stars">★★★★★</td></tr>
+                            <tr><td>Карточка психолога - десктоп</td><td>Паладий Максим</td><td><span class="status-badge status-done">✅ Выполнено</span></td><td>21.02.26 - 25.02.26</td><td class="rating-stars">★★★★★</td></tr>
+                            <tr><td>Каталог психологов (планшет/десктоп)</td><td>Розыев Санджар</td><td><span class="status-badge status-done">✅ Выполнено</span></td><td>21.02.26 - 13.03.26</td><td class="rating-stars">★★★★★</td></tr>
+                            <tr><td>Тестирование API: регистрация, авторизация</td><td>Фролова Ксения, Кирилюк Владислав</td><td><span class="status-badge status-done">✅ Выполнено</span></td><td>01.03.26 - 14.03.26</td><td class="rating-stars">★★★★★</td></tr>
+                            <tr><td>Тестирование ЛК: Главная, Профиль</td><td>Паладий Максим, Кирилюк Владислав</td><td><span class="status-badge status-done">✅ Выполнено</span></td><td>17.03.26 - 21.03.26</td><td class="rating-stars">★★★★★</td></tr>
+                            <tr><td>Тестирование заявок и записи (API)</td><td>Фролова Ксения, Паладий Максим, Кирилюк Владислав, Розыев Санджар</td><td><span class="status-badge status-done">✅ Выполнено</span></td><td>05.04.26 - 13.04.26</td><td class="rating-stars">★★★★★</td></tr>
+                            <tr><td>ЛК - Запись на сессию (чек-лист)</td><td>Кушжетеров Ибрагим</td><td><span class="status-badge status-done">✅ Выполнено</span></td><td>21.04.26 - 26.04.26</td><td class="rating-stars">★★★★★</td></tr>
+                            <tr><td>Проверка адаптивности форм и ЛК</td><td>Паладий Максим, Фролова Ксения, Кирилюк Владислав, Розыев Санджар</td><td><span class="status-badge status-done">✅ Выполнено</span></td><td>21.04.26 - 26.04.26</td><td class="rating-stars">★★★★★</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- ==================== ДИЗАЙН ==================== -->
+                <div class="department-section">
+                    <div class="department-header">
+                        <div class="department-title">
+                            <span class="department-icon">🎨</span>
+                            Дизайн
+                        </div>
+                    </div>
+                    <div class="department-desc">
+                        <strong>Общий вклад:</strong> создание дизайн-макетов, тёмная тема, доработка ЛК, обработка заявок, сценарии записи на приём, настройки cookie и смены темы, профиль с подтверждением согласия.
+                    </div>
+                    <table class="tasks-table">
+                        <thead>
+                            <tr><th>Задача</th><th>Исполнитель</th><th>Статус</th><th>Сроки</th><th>Оценка</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>Результаты теста — тёмная тема</td><td>Фролова Ксения</td><td><span class="status-badge status-done">✅ Выполнено</span></td><td>06.04.26 - 12.04.26</td><td class="rating-stars">★★★★★</td></tr>
+                            <tr><td>ЛК психолога — тёмная тема</td><td>Нилуфар Исматова</td><td><span class="status-badge status-done">✅ Выполнено</span></td><td>06.04.26 - 12.04.26</td><td class="rating-stars">★★★★★</td></tr>
+                            <tr><td>Страница настроек с cookie и сменой темы</td><td>Фёдорова Полина</td><td><span class="status-badge status-done">✅ Выполнено</span></td><td>20.04.26 - 26.04.26</td><td class="rating-stars">★★★★★</td></tr>
+                            <tr><td>Доработка профиля с подтверждением и отзывом согласия</td><td>Фёдорова Полина</td><td><span class="status-badge status-done">✅ Выполнено</span></td><td>20.04.26 - 26.04.26</td><td class="rating-stars">★★★★★</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- ==================== ИНФОРМАЦИОННАЯ БЕЗОПАСНОСТЬ ==================== -->
+                <div class="department-section">
+                    <div class="department-header">
+                        <div class="department-title">
+                            <span class="department-icon">🔒</span>
+                            Информационная безопасность
+                        </div>
+                    </div>
+                    <div class="department-desc">
+                        <strong>Общий вклад:</strong> разработка политик конфиденциальности, обработки cookies, хранения персональных данных, анализ уязвимостей бэкенда и фронтенда, подготовка презентаций, анализ законодательства, исследование конструкторов сайтов.
+                    </div>
+                    <table class="tasks-table">
+                        <thead>
+                            <tr><th>Задача</th><th>Исполнитель</th><th>Статус</th><th>Сроки</th><th>Оценка</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>Политика конфиденциальности</td><td>Пацев Максим</td><td><span class="status-badge status-done">✅ Выполнено</span></td><td>06.04.26 - 20.04.26</td><td class="rating-stars">★★★★★</td></tr>
+                            <tr><td>Политика обработки файлов cookie</td><td>Садыков Ростислав</td><td><span class="status-badge status-done">✅ Выполнено</span></td><td>06.04.26 - 13.04.26</td><td class="rating-stars">★★★★☆</td></tr>
+                            <tr><td>Политика допустимого использования</td><td>Корвяков Святогор</td><td><span class="status-badge status-done">✅ Выполнено</span></td><td>20.04.26 - 27.04.26</td><td class="rating-stars">★★☆☆☆</td></tr>
+                            <tr><td>Политика раскрытия уязвимостей</td><td>Корвяков Святогор</td><td><span class="status-badge status-done">✅ Выполнено</span></td><td>20.04.26 - 27.04.26</td><td class="rating-stars">★★☆☆☆</td></tr>
+                            <tr><td>Анализ уязвимостей бэкенда и фронтенда</td><td>Судник Владислав</td><td><span class="status-badge status-done">✅ Выполнено</span></td><td>01.04.26 - 06.04.26</td><td class="rating-stars">★☆☆☆☆</td></tr>
+                            <tr><td>Анализ законодательства о социальной рекламе</td><td>Судник Владислав</td><td><span class="status-badge status-done">✅ Выполнено</span></td><td>10.04.26 - 26.04.26</td><td class="rating-stars">★★☆☆☆</td></tr>
+                            <tr><td>Публичная оферта сайта СПП</td><td>Садыков Ростислав</td><td><span class="status-badge status-done">✅ Выполнено</span></td><td>13.04.26 - 20.04.26</td><td class="rating-stars">★★★☆☆</td></tr>
+                            <tr><td>Памятка по автоматизации работы сайта</td><td>Усачев Тимофей</td><td><span class="status-badge status-done">✅ Выполнено</span></td><td>13.04.26 - 20.04.26</td><td class="rating-stars">★★★★☆</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- ==================== ВНЕШНИЕ КОММУНИКАЦИИ (обновлено) ==================== -->
+                <div class="department-section">
+                    <div class="department-header">
+                        <div class="department-title">
+                            <span class="department-icon">🤝</span>
+                            Внешние коммуникации
+                        </div>
+                    </div>
+                    <div class="department-desc">
+                        <strong>Общий вклад:</strong> руководство интеграцией, связь с руководством СПП, организация видеоконференций, обсуждение медиа-проектов, запрос актуальности проекта, обсуждение интервью с сотрудником СПП, возможность добавления новостей на сайт.
+                    </div>
+                    <table class="tasks-table">
+                        <thead>
+                            <tr><th>Задача</th><th>Исполнитель</th><th>Статус</th><th>Сроки</th><th>Оценка</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>Руководство отделом</td><td>Фарафонов Максим</td><td><span class="status-badge status-done">✅ Выполнено</span></td><td>02.02.26 - 12.03.26</td><td class="rating-stars">★★★★☆</td></tr>
+                            <tr><td>Обсуждение трудностей и неудобств СПП при записи через ВК</td><td>Фарафонов Максим</td><td><span class="status-badge status-done">✅ Выполнено</span></td><td>23.02.26 - 02.03.26</td><td class="rating-stars">★★★★☆</td></tr>
+                            <tr><td>Обсуждение медиа-проектов</td><td>Фарафонов Максим</td><td><span class="status-badge status-done">✅ Выполнено</span></td><td>02.03.26 - 09.03.26</td><td class="rating-stars">★★★★☆</td></tr>
+                            <tr><td>Запрос актуальности проекта у СПП</td><td>Фарафонов Максим</td><td><span class="status-badge status-done">✅ Выполнено</span></td><td>02.03.26 - 09.03.26</td><td class="rating-stars">★★★★☆</td></tr>
+                            <tr><td>Обсуждение деталей интервью с сотрудником СПП</td><td>Фарафонов Максим</td><td><span class="status-badge status-done">✅ Выполнено</span></td><td>02.03.26 - 09.03.26</td><td class="rating-stars">★★★★☆</td></tr>
+                            <tr><td>Обсуждение с СПП возможности добавления новостей на сайт</td><td>Фарафонов Максим</td><td><span class="status-badge status-done">✅ Выполнено</span></td><td>02.03.26 - 09.03.26</td><td class="rating-stars">★★★★☆</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </main>
+    </div>
+</body>
+</html>
