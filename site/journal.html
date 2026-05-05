@@ -138,23 +138,22 @@
             .tasks-table th:nth-child(1) {
                 width: 30%;
             }
-            /* Задача */
+
             .tasks-table th:nth-child(2) {
                 width: 25%;
             }
-            /* Исполнитель */
+
             .tasks-table th:nth-child(3) {
                 width: 15%;
             }
-            /* Статус */
+
             .tasks-table th:nth-child(4) {
                 width: 15%;
             }
-            /* Сроки */
+
             .tasks-table th:nth-child(5) {
                 width: 15%;
             }
-            /* Оценка */
 
             .tasks-table th {
                 text-align: left;
@@ -203,7 +202,7 @@
             white-space: nowrap;
         }
 
-        /* Единый стиль для всех отделов — каждая секция имеет одинаковую структуру */
+        /* Медиазапросы для адаптивности */
         @media (max-width: 768px) {
             header.container {
                 flex-direction: column;
@@ -295,7 +294,7 @@
                         <tbody>
                             <tr><td>Ответ на вопросы СПП</td><td>Шкуренко Роман</td><td><span class="status-badge status-done">✅ Выполнено</span></td><td>03.02.25 - 11.02.25</td><td class="rating-stars">★★★★☆</td></tr>
                             <tr><td>Ревью дизайна</td><td>Печечян Валерий</td><td><span class="status-badge status-done">✅ Выполнено</span></td><td>09.02.25 - 14.02.25</td><td class="rating-stars">★★★★☆</td></tr>
-                            <tr><td>Карта сайта/Пути пользователя и психолога</td><td>Шкуренко Роман</td><td><span class="status-badge status-progress">🔄 Выполняется</span></td><td>14.02.25 - н.в.</td><td class="rating-stars">★★★★★</td></tr>
+                            <tr><td>Карта сайта/Пути пользователя и психолога</td><td>Шкуренко Роман</td><td><span class="status-badge status-done">✅ Выполнено</span></td><td>14.02.25 - 28.02.25</td><td class="rating-stars">★★★★★</td></tr>
                             <tr><td>Изменение логики записи на консультации</td><td>Печечян Валерий</td><td><span class="status-badge status-done">✅ Выполнено</span></td><td>01.03.25</td><td class="rating-stars">★★★★☆</td></tr>
                         </tbody>
                     </table>
@@ -322,7 +321,7 @@
                             <tr><td>Задеплоить проект</td><td>Латорцев Артём</td><td><span class="status-badge status-done">✅ Выполнено</span></td><td>17.02.25 - 24.02.25</td><td class="rating-stars">★★★☆☆</td></tr>
                             <tr><td>Написание документации для бэкенда</td><td>Самойлова Валерия</td><td><span class="status-badge status-done">✅ Выполнено</span></td><td>03.02.25 - 17.02.25</td><td class="rating-stars">★★★★★</td></tr>
                             <tr><td>Функция "запомнить меня"</td><td>Куленко Андрей</td><td><span class="status-badge status-done">✅ Выполнено</span></td><td>19.03.25 - 23.04.25</td><td class="rating-stars">★★★★★</td></tr>
-                            <tr><td>Изменить систему ролей</td><td>Куленко Андрей</td><td><span class="status-badge status-progress">🔄 Выполняется</span></td><td>23.04.25 - 14.05.25</td><td class="rating-stars">★★★★★</td></tr>
+                            <tr><td>Изменить систему ролей</td><td>Куленко Андрей</td><td><span class="status-badge status-done">✅ Выполнено</span></td><td>23.04.25 - 14.05.25</td><td class="rating-stars">★★★★★</td></tr>
                         </tbody>
                     </table>
                 </div>
@@ -380,6 +379,35 @@
                             <tr><td>Тестирование заявок и записи (API)</td><td>Фролова Ксения, Паладий Максим, Кирилюк Владислав, Розыев Санджар</td><td><span class="status-badge status-done">✅ Выполнено</span></td><td>05.04.26 - 13.04.26</td><td class="rating-stars">★★★★★</td></tr>
                             <tr><td>ЛК - Запись на сессию (чек-лист)</td><td>Кушжетеров Ибрагим</td><td><span class="status-badge status-done">✅ Выполнено</span></td><td>21.04.26 - 26.04.26</td><td class="rating-stars">★★★★★</td></tr>
                             <tr><td>Проверка адаптивности форм и ЛК</td><td>Паладий Максим, Фролова Ксения, Кирилюк Владислав, Розыев Санджар</td><td><span class="status-badge status-done">✅ Выполнено</span></td><td>21.04.26 - 26.04.26</td><td class="rating-stars">★★★★★</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- ==================== ДОКУМЕНТАЦИЯ ==================== -->
+                <div class="department-section">
+                    <div class="department-header">
+                        <div class="department-title">
+                            <span class="department-icon">📄</span>
+                            Документация
+                        </div>
+                    </div>
+                    <div class="department-desc">
+                        <strong>Общий вклад:</strong> подготовка презентационных материалов, разработка уставной документации, описание ключевого функционала, составление пользовательских сценариев, создание графических материалов, анализ конкурентной среды, формирование дорожной карты.
+                    </div>
+                    <table class="tasks-table">
+                        <thead>
+                            <tr><th>Задача</th><th>Исполнитель</th><th>Статус</th><th>Сроки</th><th>Оценка</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>Презентация</td><td>Володина Анастасия Игоревна</td><td><span class="status-badge status-done">✅ Выполнено</span></td><td>02.03.2026 - 16.03.2026</td><td class="rating-stars">★★★★★</td></tr>
+                            <tr><td>Устав проекта</td><td>Виданова Вероника Павловна</td><td><span class="status-badge status-done">✅ Выполнено</span></td><td>02.03.2026 - 16.03.2026</td><td class="rating-stars">★★★★★</td></tr>
+                            <tr><td>Определение проблемы</td><td>Сорокина Дарья Александровна</td><td><span class="status-badge status-done">✅ Выполнено</span></td><td>02.03.2026 - 09.03.2026</td><td class="rating-stars">★★★★★</td></tr>
+                            <tr><td>Описание ключевого функционала</td><td>Сорокина Дарья Александровна</td><td><span class="status-badge status-done">✅ Выполнено</span></td><td>02.03.2026 - 09.03.2026</td><td class="rating-stars">★★★★★</td></tr>
+                            <tr><td>Составление путей пользователя</td><td>Сорокина Дарья Александровна</td><td><span class="status-badge status-done">✅ Выполнено</span></td><td>02.03.2026 - 09.03.2026</td><td class="rating-stars">★★★★★</td></tr>
+                            <tr><td>Связь с приоритетами развития</td><td>Виданова Вероника Павловна</td><td><span class="status-badge status-done">✅ Выполнено</span></td><td>02.03.2026 - 09.03.2026</td><td class="rating-stars">★★★★★</td></tr>
+                            <tr><td>Графический материал для презентации</td><td>Володина Анастасия Игоревна</td><td><span class="status-badge status-done">✅ Выполнено</span></td><td>02.03.2026 - 09.03.2026</td><td class="rating-stars">★★★★★</td></tr>
+                            <tr><td>Описание результатов анализа других вузов</td><td>Володина Анастасия Игоревна</td><td><span class="status-badge status-done">✅ Выполнено</span></td><td>02.03.2026 - 09.03.2026</td><td class="rating-stars">★★★★★</td></tr>
+                            <tr><td>Дорожная карта</td><td>Виданова Вероника Павловна</td><td><span class="status-badge status-done">✅ Выполнено</span></td><td>02.03.2026 - 09.03.2026</td><td class="rating-stars">★★★★★</td></tr>
                         </tbody>
                     </table>
                 </div>
@@ -461,14 +489,62 @@
                             <tr><th>Задача</th><th>Исполнитель</th><th>Статус</th><th>Сроки</th><th>Оценка</th></tr>
                         </thead>
                         <tbody>
-                            <tr><td>Политика конфиденциальности</td><td>Пацев Максим</td><td><span class="status-badge status-done">✅ Выполнено</span></td><td>06.04.26 - 20.04.26</td><td class="rating-stars">★★★★★</td></tr>
-                            <tr><td>Политика обработки файлов cookie</td><td>Садыков Ростислав</td><td><span class="status-badge status-done">✅ Выполнено</span></td><td>06.04.26 - 13.04.26</td><td class="rating-stars">★★★★☆</td></tr>
-                            <tr><td>Политика допустимого использования</td><td>Корвяков Святогор</td><td><span class="status-badge status-done">✅ Выполнено</span></td><td>20.04.26 - 27.04.26</td><td class="rating-stars">★★☆☆☆</td></tr>
-                            <tr><td>Политика раскрытия уязвимостей</td><td>Корвяков Святогор</td><td><span class="status-badge status-done">✅ Выполнено</span></td><td>20.04.26 - 27.04.26</td><td class="rating-stars">★★☆☆☆</td></tr>
-                            <tr><td>Анализ уязвимостей бэкенда и фронтенда</td><td>Судник Владислав</td><td><span class="status-badge status-done">✅ Выполнено</span></td><td>01.04.26 - 06.04.26</td><td class="rating-stars">★☆☆☆☆</td></tr>
-                            <tr><td>Анализ законодательства о социальной рекламе</td><td>Судник Владислав</td><td><span class="status-badge status-done">✅ Выполнено</span></td><td>10.04.26 - 26.04.26</td><td class="rating-stars">★★☆☆☆</td></tr>
-                            <tr><td>Публичная оферта сайта СПП</td><td>Садыков Ростислав</td><td><span class="status-badge status-done">✅ Выполнено</span></td><td>13.04.26 - 20.04.26</td><td class="rating-stars">★★★☆☆</td></tr>
-                            <tr><td>Памятка по автоматизации работы сайта</td><td>Усачев Тимофей</td><td><span class="status-badge status-done">✅ Выполнено</span></td><td>13.04.26 - 20.04.26</td><td class="rating-stars">★★★★☆</td></tr>
+                            <tr>
+                                <td>Политика конфиденциальности</td>
+                                <td>Пацев Максим</td>
+                                <td><span class="status-badge status-done">✅ Выполнено</span></td>
+                                <td>06.04.26 - 20.04.26</td>
+                                <td class="rating-stars">★★★★★</td>
+                            </tr>
+                            <tr>
+                                <td>Политика обработки файлов cookie</td>
+                                <td>Садыков Ростислав</td>
+                                <td><span class="status-badge status-done">✅ Выполнено</span></td>
+                                <td>06.04.26 - 13.04.26</td>
+                                <td class="rating-stars">★★★★☆</td>
+                            </tr>
+                            <tr>
+                                <td>Политика допустимого использования</td>
+                                <td>Корвяков Святогор</td>
+                                <td><span class="status-badge status-done">✅ Выполнено</span></td>
+                                <td>20.04.26 - 27.04.26</td>
+                                <td class="rating-stars">★★☆☆☆</td>
+                            </tr>
+                            <tr>
+                                <td>Политика раскрытия уязвимостей</td>
+                                <td>Корвяков Святогор</td>
+                                <td><span class="status-badge status-done">✅ Выполнено</span></td>
+                                <td>20.04.26 - 27.04.26</td>
+                                <td class="rating-stars">★★☆☆☆</td>
+                            </tr>
+                            <tr>
+                                <td>Анализ уязвимостей бэкенда и фронтенда</td>
+                                <td>Судник Владислав</td>
+                                <td><span class="status-badge status-done">✅ Выполнено</span></td>
+                                <td>01.04.26 - 06.04.26</td>
+                                <td class="rating-stars">★☆☆☆☆</td>
+                            </tr>
+                            <tr>
+                                <td>Анализ законодательства о социальной рекламе</td>
+                                <td>Судник Владислав</td>
+                                <td><span class="status-badge status-done">✅ Выполнено</span></td>
+                                <td>10.04.26 - 26.04.26</td>
+                                <td class="rating-stars">★★☆☆☆</td>
+                            </tr>
+                            <tr>
+                                <td>Публичная оферта сайта СПП</td>
+                                <td>Садыков Ростислав</td>
+                                <td><span class="status-badge status-done">✅ Выполнено</span></td>
+                                <td>13.04.26 - 20.04.26</td>
+                                <td class="rating-stars">★★★☆☆</td>
+                            </tr>
+                            <tr>
+                                <td>Памятка по автоматизации работы сайта</td>
+                                <td>Усачев Тимофей</td>
+                                <td><span class="status-badge status-done">✅ Выполнено</span></td>
+                                <td>13.04.26 - 20.04.26</td>
+                                <td class="rating-stars">★★★★☆</td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
@@ -490,51 +566,50 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <td>Руководство отделом
-                                <td>Фарафонов Максим
-                                <td><span class="status-badge status-done">✅ Выполнено</span>
-                                <td>02.02.26 - 12.03.26
-                                <td class="rating-stars">★★★★☆
+                                <td>Руководство отделом</td>
+                                <td>Фарафонов Максим</td>
+                                <td><span class="status-badge status-done">✅ Выполнено</span></td>
+                                <td>02.02.26 - 12.03.26</td>
+                                <td class="rating-stars">★★★★☆</td>
                             </tr>
                             <tr>
-                                <td>Обсуждение трудностей и неудобств СПП при записи через ВК
-                                <td>Фарафонов Максим
-                                <td><span class="status-badge status-done">✅ Выполнено</span>
-                                <td>23.02.26 - 02.03.26
-                                <td class="rating-stars">★★★★☆
+                                <td>Обсуждение трудностей и неудобств СПП при записи через ВК</td>
+                                <td>Фарафонов Максим</td>
+                                <td><span class="status-badge status-done">✅ Выполнено</span></td>
+                                <td>23.02.26 - 02.03.26</td>
+                                <td class="rating-stars">★★★★☆</td>
                             </tr>
                             <tr>
-                                <td>Обсуждение медиа-проектов
-                                <td>Фарафонов Максим
-                                <td><span class="status-badge status-done">✅ Выполнено</span>
-                                <td>02.03.26 - 09.03.26
-                                <td class="rating-stars">★★★★☆
+                                <td>Обсуждение медиа-проектов</td>
+                                <td>Фарафонов Максим</td>
+                                <td><span class="status-badge status-done">✅ Выполнено</span></td>
+                                <td>02.03.26 - 09.03.26</td>
+                                <td class="rating-stars">★★★★☆</td>
                             </tr>
                             <tr>
-                                <td>Запрос актуальности проекта у СПП
-                                <td>Фарафонов Максим
-                                <td><span class="status-badge status-done">✅ Выполнено</span>
-                                <td>02.03.26 - 09.03.26
-                                <td class="rating-stars">★★★★☆
+                                <td>Запрос актуальности проекта у СПП</td>
+                                <td>Фарафонов Максим</td>
+                                <td><span class="status-badge status-done">✅ Выполнено</span></td>
+                                <td>02.03.26 - 09.03.26</td>
+                                <td class="rating-stars">★★★★☆</td>
                             </tr>
                             <tr>
-                                <td>Обсуждение деталей интервью с сотрудником СПП
-                                <td>Фарафонов Максим
-                                <td><span class="status-badge status-done">✅ Выполнено</span>
-                                <td>02.03.26 - 09.03.26
-                                <td class="rating-stars">★★★★☆
+                                <td>Обсуждение деталей интервью с сотрудником СПП</td>
+                                <td>Фарафонов Максим</td>
+                                <td><span class="status-badge status-done">✅ Выполнено</span></td>
+                                <td>02.03.26 - 09.03.26</td>
+                                <td class="rating-stars">★★★★☆</td>
                             </tr>
                             <tr>
-                                <td>Обсуждение с СПП возможности добавления новостей на сайт
-                                <td>Фарафонов Максим
-                                <td><span class="status-badge status-done">✅ Выполнено</span>
-                                <td>02.03.26 - 09.03.26
-                                <td class="rating-stars">★★★★☆
+                                <td>Обсуждение с СПП возможности добавления новостей на сайт</td>
+                                <td>Фарафонов Максим</td>
+                                <td><span class="status-badge status-done">✅ Выполнено</span></td>
+                                <td>02.03.26 - 09.03.26</td>
+                                <td class="rating-stars">★★★★☆</td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
-
             </div>
         </main>
     </div>
