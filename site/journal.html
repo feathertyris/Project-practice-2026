@@ -126,12 +126,35 @@
                 color: #1a3b5d;
             }
 
-        /* Таблица задач */
+        /* Таблица задач — унифицированная ширина колонок */
         .tasks-table {
             width: 100%;
+            table-layout: fixed;
             border-collapse: collapse;
             font-size: 0.85rem;
         }
+
+            /* Фиксированная ширина колонок для единообразия */
+            .tasks-table th:nth-child(1) {
+                width: 30%;
+            }
+            /* Задача */
+            .tasks-table th:nth-child(2) {
+                width: 25%;
+            }
+            /* Исполнитель */
+            .tasks-table th:nth-child(3) {
+                width: 15%;
+            }
+            /* Статус */
+            .tasks-table th:nth-child(4) {
+                width: 15%;
+            }
+            /* Сроки */
+            .tasks-table th:nth-child(5) {
+                width: 15%;
+            }
+            /* Оценка */
 
             .tasks-table th {
                 text-align: left;
@@ -147,6 +170,7 @@
                 border-bottom: 1px solid #f0f4f8;
                 color: #2c3e50;
                 vertical-align: top;
+                word-wrap: break-word;
             }
 
             .tasks-table tr:last-child td {
@@ -159,6 +183,7 @@
             border-radius: 50px;
             font-size: 0.7rem;
             font-weight: 600;
+            white-space: nowrap;
         }
 
         .status-done {
@@ -175,8 +200,10 @@
             color: #ffc107;
             font-size: 0.7rem;
             letter-spacing: 2px;
+            white-space: nowrap;
         }
 
+        /* Единый стиль для всех отделов — каждая секция имеет одинаковую структуру */
         @media (max-width: 768px) {
             header.container {
                 flex-direction: column;
@@ -199,7 +226,32 @@
             .tasks-table th,
             .tasks-table td {
                 padding: 0.5rem;
-                font-size: 0.75rem;
+                font-size: 0.7rem;
+            }
+
+                .tasks-table th:nth-child(1) {
+                    width: 28%;
+                }
+
+                .tasks-table th:nth-child(2) {
+                    width: 22%;
+                }
+
+                .tasks-table th:nth-child(3) {
+                    width: 16%;
+                }
+
+                .tasks-table th:nth-child(4) {
+                    width: 18%;
+                }
+
+                .tasks-table th:nth-child(5) {
+                    width: 16%;
+                }
+
+            .status-badge {
+                white-space: normal;
+                font-size: 0.6rem;
             }
         }
     </style>
@@ -275,7 +327,7 @@
                     </table>
                 </div>
 
-                <!-- ==================== ФРОНТЕНД-РАЗРАБОТКА (без колонки "Оценка работы") ==================== -->
+                <!-- ==================== ФРОНТЕНД-РАЗРАБОТКА ==================== -->
                 <div class="department-section">
                     <div class="department-header">
                         <div class="department-title">
@@ -292,17 +344,13 @@
                         </thead>
                         <tbody>
                             <tr><td>Кодревью</td><td>Волынников Роман</td><td><span class="status-badge status-done">✅ Выполнено</span></td><td>02.02.26 - 16.03.26</td><td class="rating-stars">★★★★★</td></tr>
-                            <tr><td>Разработка ЛК</td><td>Волынников Роман, Реунин Сергей, Кушжетеров Ибрагим</td><td><span class="status-badge status-done">✅ Выполнено</span></td><td>23.02.26 - 09.03.26</td><td class="rating-stars">★★★★★</td></tr>
-                            <tr><td>Ответственный за GitHub</td><td>Волынников Роман</td><td><span class="status-badge status-done">✅ Выполнено</span></td><td>09.02.26 - 16.03.26</td><td class="rating-stars">★★★☆☆</td></tr>
-                            <tr><td>Руководство отделом / DevOps</td><td>Романихин Михаил</td><td><span class="status-badge status-done">✅ Выполнено</span></td><td>02.02.26 - 16.03.26</td><td class="rating-stars">★★★★★</td></tr>
-                            <tr><td>Тёмная тема</td><td>Зарубин Дмитрий, Якунин Егор</td><td><span class="status-badge status-done">✅ Выполнено</span></td><td>02.03.26 - 23.03.26</td><td class="rating-stars">★★★☆☆</td></tr>
+                            <tr><td>Разработка новостей</td><td>Гумашян Давид</td><td><span class="status-badge status-done">✅ Выполнено</span></td><td>02.03.26 - 23.03.26</td><td class="rating-stars">★★★☆☆</td></tr>
+                            <tr><td>Разработка новостей</td><td>Жемчугов Алексей</td><td><span class="status-badge status-done">✅ Выполнено</span></td><td>16.02.26 - 23.03.26</td><td class="rating-stars">★★★★☆</td></tr>
                             <tr><td>Модальные окна</td><td>Зарубин Дмитрий</td><td><span class="status-badge status-done">✅ Выполнено</span></td><td>16.02.26 - 23.03.26</td><td class="rating-stars">★★☆☆☆</td></tr>
                             <tr><td>Карточка психолога</td><td>Реунин Сергей</td><td><span class="status-badge status-done">✅ Выполнено</span></td><td>19.01.26 - 26.01.26</td><td class="rating-stars">★★★★☆</td></tr>
+                            <tr><td>Руководство отделом</td><td>Романихин Михаил</td><td><span class="status-badge status-done">✅ Выполнено</span></td><td>02.02.26 - 16.03.26</td><td class="rating-stars">★★★★★</td></tr>
                             <tr><td>Кнопка наверх</td><td>Якунин Егор</td><td><span class="status-badge status-done">✅ Выполнено</span></td><td>16.02.26 - 23.02.26</td><td class="rating-stars">★★☆☆☆</td></tr>
-                            <tr><td>Разработка новостей</td><td>Гумашян Давид, Жемчугов Алексей</td><td><span class="status-badge status-done">✅ Выполнено</span></td><td>16.02.26 - 23.03.26</td><td class="rating-stars">★★★★☆</td></tr>
-                            <tr><td>Доработка футера</td><td>Гумашян Давид</td><td><span class="status-badge status-done">✅ Выполнено</span></td><td>23.02.26 - 02.03.26</td><td class="rating-stars">★★☆☆☆</td></tr>
-                            <tr><td>Доработка гамбургер-меню</td><td>Жемчугов Алексей</td><td><span class="status-badge status-done">✅ Выполнено</span></td><td>16.02.26 - 23.02.26</td><td class="rating-stars">★★☆☆☆</td></tr>
-                            <tr><td>Правка орфографии</td><td>Кушжетеров Ибрагим</td><td><span class="status-badge status-done">✅ Выполнено</span></td><td>16.03.26 - 23.03.26</td><td class="rating-stars">★★☆☆☆</td></tr>
+                            <tr><td>Разработка ЛК</td><td>Кушжетеров Ибрагим</td><td><span class="status-badge status-done">✅ Выполнено</span></td><td>23.02.26 - 09.03.26</td><td class="rating-stars">★★★★★</td></tr>
                         </tbody>
                     </table>
                 </div>
@@ -356,6 +404,43 @@
                             <tr><td>ЛК психолога — тёмная тема</td><td>Нилуфар Исматова</td><td><span class="status-badge status-done">✅ Выполнено</span></td><td>06.04.26 - 12.04.26</td><td class="rating-stars">★★★★★</td></tr>
                             <tr><td>Страница настроек с cookie и сменой темы</td><td>Фёдорова Полина</td><td><span class="status-badge status-done">✅ Выполнено</span></td><td>20.04.26 - 26.04.26</td><td class="rating-stars">★★★★★</td></tr>
                             <tr><td>Доработка профиля с подтверждением и отзывом согласия</td><td>Фёдорова Полина</td><td><span class="status-badge status-done">✅ Выполнено</span></td><td>20.04.26 - 26.04.26</td><td class="rating-stars">★★★★★</td></tr>
+                            <tr><td>Дизайн главной страницы (адаптив)</td><td>Заводун Александр</td><td><span class="status-badge status-done">✅ Выполнено</span></td><td>01.02.26 - 15.02.26</td><td class="rating-stars">★★★★☆</td></tr>
+                            <tr><td>Прототип личного кабинета пользователя</td><td>Мочалова Анастасия</td><td><span class="status-badge status-done">✅ Выполнено</span></td><td>05.02.26 - 20.02.26</td><td class="rating-stars">★★★★★</td></tr>
+                            <tr><td>UI-kit проекта</td><td>Паладий Максим</td><td><span class="status-badge status-done">✅ Выполнено</span></td><td>10.02.26 - 28.02.26</td><td class="rating-stars">★★★★☆</td></tr>
+                            <tr><td>Дизайн карточки психолога</td><td>Нилуфар Исматова</td><td><span class="status-badge status-done">✅ Выполнено</span></td><td>12.02.26 - 25.02.26</td><td class="rating-stars">★★★★☆</td></tr>
+                            <tr><td>Адаптивная верстка макетов под мобильные устройства</td><td>Фролова Ксения</td><td><span class="status-badge status-done">✅ Выполнено</span></td><td>01.03.26 - 15.03.26</td><td class="rating-stars">★★★★★</td></tr>
+                            <tr><td>Разработка макетов страницы FAQ</td><td>Мочалова Анастасия</td><td><span class="status-badge status-done">✅ Выполнено</span></td><td>10.03.26 - 20.03.26</td><td class="rating-stars">★★★★☆</td></tr>
+                            <tr><td>Дизайн страницы полезных материалов</td><td>Заводун Александр</td><td><span class="status-badge status-done">✅ Выполнено</span></td><td>15.03.26 - 28.03.26</td><td class="rating-stars">★★★★★</td></tr>
+                            <tr><td>Создание макетов форм записи на консультацию</td><td>Фёдорова Полина</td><td><span class="status-badge status-done">✅ Выполнено</span></td><td>01.04.26 - 10.04.26</td><td class="rating-stars">★★★★☆</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- ==================== МЕДИА ==================== -->
+                <div class="department-section">
+                    <div class="department-header">
+                        <div class="department-title">
+                            <span class="department-icon">📸</span>
+                            Медиа
+                        </div>
+                    </div>
+                    <div class="department-desc">
+                        <strong>Общий вклад:</strong> информационное сопровождение проекта, создание контента, фотофиксация, ведение отчетности по медиа-активностям, написание и редактирование постов, отбор фотографий, сбор информации с пар.
+                    </div>
+                    <table class="tasks-table">
+                        <thead>
+                            <tr><th>Задача</th><th>Исполнитель</th><th>Статус</th><th>Сроки</th><th>Оценка</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>Написание постов</td><td>Куленко Андрей Петрович</td><td><span class="status-badge status-done">✅ Выполнено</span></td><td>01.02.26 - 15.02.26</td><td class="rating-stars">★★★★☆</td></tr>
+                            <tr><td>Фотосъемка</td><td>Груздев Дмитрий Александрович</td><td><span class="status-badge status-done">✅ Выполнено</span></td><td>05.02.26 - 20.02.26</td><td class="rating-stars">★★★★★</td></tr>
+                            <tr><td>Написание постов</td><td>Иващенко София Андреевна</td><td><span class="status-badge status-done">✅ Выполнено</span></td><td>01.02.26 - 28.02.26</td><td class="rating-stars">★★★★★</td></tr>
+                            <tr><td>Редактирование постов</td><td>Кудрявцева Валерия Александровна</td><td><span class="status-badge status-done">✅ Выполнено</span></td><td>10.02.26 - 25.02.26</td><td class="rating-stars">★★★★☆</td></tr>
+                            <tr><td>Написание постов</td><td>Петренко Виктория Александровна</td><td><span class="status-badge status-done">✅ Выполнено</span></td><td>01.02.26 - 20.02.26</td><td class="rating-stars">★★★★★</td></tr>
+                            <tr><td>Редактирование фотографий</td><td>Ганута Дарья Ивановна</td><td><span class="status-badge status-done">✅ Выполнено</span></td><td>15.02.26 - 25.02.26</td><td class="rating-stars">★★★★★</td></tr>
+                            <tr><td>Отбор фотографий</td><td>Рутовская Алиса Антоновна</td><td><span class="status-badge status-done">✅ Выполнено</span></td><td>15.02.26 - 25.02.26</td><td class="rating-stars">★★★★☆</td></tr>
+                            <tr><td>Редактирование постов</td><td>Володина Анастасия Игоревна</td><td><span class="status-badge status-done">✅ Выполнено</span></td><td>10.02.26 - 25.02.26</td><td class="rating-stars">★★★★☆</td></tr>
+                            <tr><td>Сбор информации с пар</td><td>Гусев Артем Олегович</td><td><span class="status-badge status-done">✅ Выполнено</span></td><td>01.02.26 - 28.02.26</td><td class="rating-stars">★★★★★</td></tr>
                         </tbody>
                     </table>
                 </div>
@@ -388,7 +473,7 @@
                     </table>
                 </div>
 
-                <!-- ==================== ВНЕШНИЕ КОММУНИКАЦИИ (обновлено) ==================== -->
+                <!-- ==================== ВНЕШНИЕ КОММУНИКАЦИИ ==================== -->
                 <div class="department-section">
                     <div class="department-header">
                         <div class="department-title">
@@ -404,12 +489,48 @@
                             <tr><th>Задача</th><th>Исполнитель</th><th>Статус</th><th>Сроки</th><th>Оценка</th></tr>
                         </thead>
                         <tbody>
-                            <tr><td>Руководство отделом</td><td>Фарафонов Максим</td><td><span class="status-badge status-done">✅ Выполнено</span></td><td>02.02.26 - 12.03.26</td><td class="rating-stars">★★★★☆</td></tr>
-                            <tr><td>Обсуждение трудностей и неудобств СПП при записи через ВК</td><td>Фарафонов Максим</td><td><span class="status-badge status-done">✅ Выполнено</span></td><td>23.02.26 - 02.03.26</td><td class="rating-stars">★★★★☆</td></tr>
-                            <tr><td>Обсуждение медиа-проектов</td><td>Фарафонов Максим</td><td><span class="status-badge status-done">✅ Выполнено</span></td><td>02.03.26 - 09.03.26</td><td class="rating-stars">★★★★☆</td></tr>
-                            <tr><td>Запрос актуальности проекта у СПП</td><td>Фарафонов Максим</td><td><span class="status-badge status-done">✅ Выполнено</span></td><td>02.03.26 - 09.03.26</td><td class="rating-stars">★★★★☆</td></tr>
-                            <tr><td>Обсуждение деталей интервью с сотрудником СПП</td><td>Фарафонов Максим</td><td><span class="status-badge status-done">✅ Выполнено</span></td><td>02.03.26 - 09.03.26</td><td class="rating-stars">★★★★☆</td></tr>
-                            <tr><td>Обсуждение с СПП возможности добавления новостей на сайт</td><td>Фарафонов Максим</td><td><span class="status-badge status-done">✅ Выполнено</span></td><td>02.03.26 - 09.03.26</td><td class="rating-stars">★★★★☆</td></tr>
+                            <tr>
+                                <td>Руководство отделом
+                                <td>Фарафонов Максим
+                                <td><span class="status-badge status-done">✅ Выполнено</span>
+                                <td>02.02.26 - 12.03.26
+                                <td class="rating-stars">★★★★☆
+                            </tr>
+                            <tr>
+                                <td>Обсуждение трудностей и неудобств СПП при записи через ВК
+                                <td>Фарафонов Максим
+                                <td><span class="status-badge status-done">✅ Выполнено</span>
+                                <td>23.02.26 - 02.03.26
+                                <td class="rating-stars">★★★★☆
+                            </tr>
+                            <tr>
+                                <td>Обсуждение медиа-проектов
+                                <td>Фарафонов Максим
+                                <td><span class="status-badge status-done">✅ Выполнено</span>
+                                <td>02.03.26 - 09.03.26
+                                <td class="rating-stars">★★★★☆
+                            </tr>
+                            <tr>
+                                <td>Запрос актуальности проекта у СПП
+                                <td>Фарафонов Максим
+                                <td><span class="status-badge status-done">✅ Выполнено</span>
+                                <td>02.03.26 - 09.03.26
+                                <td class="rating-stars">★★★★☆
+                            </tr>
+                            <tr>
+                                <td>Обсуждение деталей интервью с сотрудником СПП
+                                <td>Фарафонов Максим
+                                <td><span class="status-badge status-done">✅ Выполнено</span>
+                                <td>02.03.26 - 09.03.26
+                                <td class="rating-stars">★★★★☆
+                            </tr>
+                            <tr>
+                                <td>Обсуждение с СПП возможности добавления новостей на сайт
+                                <td>Фарафонов Максим
+                                <td><span class="status-badge status-done">✅ Выполнено</span>
+                                <td>02.03.26 - 09.03.26
+                                <td class="rating-stars">★★★★☆
+                            </tr>
                         </tbody>
                     </table>
                 </div>
