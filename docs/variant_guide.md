@@ -10,6 +10,7 @@
 2. Пошаговое создание с нуля
 3. Модификация: что добавлено сверх базового HTTP‑сервера
 4. Полный код HTTP-сервера
+5. Иллюстрация работы
 ---
 
 ## Архитектура решения
@@ -23,7 +24,14 @@
 5. **Клиентский JavaScript** — по нажатию кнопки отправляет `fetch`-запрос на `/next-affirmation` и обновляет текст без перезагрузки страницы.
 
 **UML Диаграмма классов**
-<img width="698" height="560" alt="image" src="https://github.com/user-attachments/assets/eb81ff06-4552-4032-bcc1-a3e4293c299a" />
+
+<img width="409" height="501" alt="UML Диаграмма классов" src="https://github.com/user-attachments/assets/559ad9ee-744d-4705-9951-34f8914113a2" />
+
+
+**Диаграмма последовательности (Sequence Diagram)**
+
+<img width="720" height="629" alt="Диаграмма последовательности (Sequence Diagram)" src="https://github.com/user-attachments/assets/336e78b8-7652-4a2b-b56b-6fd774eab5b2" />
+
 
 ---
 
@@ -306,3 +314,8 @@ elif path == '/logo.svg':
 ---
 ##  Полный код HTTP-сервера
  Полный код HTTP-сервера находится в [handle_request.py](../src/handle_request.py)
+ 
+ ---
+## Иллюстрация работы
+
+<img width="1187" height="625" alt="image" src="https://github.com/user-attachments/assets/13703c2d-eaf7-42cf-ac78-3fb7470f5f21" />
