@@ -22,6 +22,8 @@
 4. **Генератор HTML** (`generate_html`) — встраивает текущую аффирмацию в готовый шаблон страницы.
 5. **Клиентский JavaScript** — по нажатию кнопки отправляет `fetch`-запрос на `/next-affirmation` и обновляет текст без перезагрузки страницы.
 
+**UML Диаграмма классов**
+<img width="698" height="560" alt="image" src="https://github.com/user-attachments/assets/eb81ff06-4552-4032-bcc1-a3e4293c299a" />
 
 ---
 
