@@ -70,12 +70,25 @@
 
 ### Фото 1
 
+<img width="634" height="845" alt="1777900022606" src="https://github.com/user-attachments/assets/bf7f7db9-4235-4d96-9618-35269ae16c01" />
+
 *На фото: я
 
 ### Фото 2
 
+<img width="634" height="845" alt="IMG_20260504_170717_747" src="https://github.com/user-attachments/assets/ae1bf536-94bc-4616-9f72-efdfd8f458e6" />
+
 ### Фото 3 
 
+<img width="634" height="845" alt="IMG_20260504_175731_236" src="https://github.com/user-attachments/assets/b526d103-6948-46bd-95d5-3ba2124f4d71" />
+
+### Фото 4 
+
+<img width="845" height="634" alt="IMG_20260504_175721_336" src="https://github.com/user-attachments/assets/b41c965e-590b-4a5b-bdba-ea246a49123a" />
+
+### Фото 5
+
+<img width="845" height="634" alt="IMG_20260504_175738_384" src="https://github.com/user-attachments/assets/6f32ec2d-8408-4ce9-934f-a85ec2874839" />
 
 ## 5. Итоги и планы по доработке
 
