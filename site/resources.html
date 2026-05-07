@@ -6,105 +6,26 @@
     <title>Ресурсы проекта — Московский Политех</title>
     <link rel="stylesheet" href="css/main.css" />
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Inter', system-ui, -apple-system, 'Helvetica Neue', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-            background-color: #ffffff;
-            line-height: 1.5;
-        }
-
-        .wrapper {
-            width: 100%;
-            min-height: 100vh;
-        }
-
-        /* Шапка */
-        header.container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem 5%;
-            border-bottom: 1px solid #eee;
-            flex-wrap: wrap;
-            gap: 1rem;
-            background: #ffffff;
-        }
-
-        .logo {
-            display: flex;
-            gap: 0.5rem;
-            align-items: center;
-        }
-
-            .logo img {
-                max-height: 60px;
-                width: auto;
-            }
-
-        .main-menu ul {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-            flex-wrap: wrap;
-        }
-
-        .main-menu a {
-            font-weight: 400;
-            transition: color 0.3s;
-            text-decoration: none;
-            color: #000000;
-        }
-
-            .main-menu a:hover {
-                color: #3498db;
-            }
-
-        .content {
-            padding: 2rem 5%;
-        }
-
-        .page-title {
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 2rem;
-            background: linear-gradient(135deg, #1a3b5d, #2c5a7a);
-            background-clip: text;
-            -webkit-background-clip: text;
-            color: transparent;
-            border-left: 6px solid #4c9fcf;
-            padding-left: 1.25rem;
-        }
-
-        .resources-container {
-            max-width: 1280px;
-            margin: 0 auto;
-        }
-
         .resources-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             gap: 1.8rem;
+            margin-top: 1rem;
         }
 
         .resource-card {
-            background: #ffffff;
+            background: #fff;
             border-radius: 1.2rem;
             padding: 1.5rem;
-            border: 1px solid #eef2f8;
-            transition: all 0.2s ease;
-            text-align: left;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02), 0 4px 12px rgba(0, 0, 0, 0.03);
+            border: 1px solid var(--border-light);
+            transition: 0.2s;
+            box-shadow: var(--shadow-sm);
         }
 
             .resource-card:hover {
                 transform: translateY(-4px);
-                box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
-                border-color: #cde3ef;
+                box-shadow: var(--shadow-hover);
+                border-color: var(--primary-light);
             }
 
         .resource-icon {
@@ -115,204 +36,61 @@
         .resource-card h3 {
             font-size: 1.2rem;
             font-weight: 700;
-            color: #1a3b5d;
+            color: var(--primary-dark);
             margin-bottom: 0.5rem;
         }
 
         .resource-card p {
             font-size: 0.85rem;
-            color: #5a6e7e;
+            color: var(--text-muted);
             margin-bottom: 0.8rem;
-            line-height: 1.4;
         }
 
         .resource-divider {
             height: 1px;
-            background: #eef2f8;
+            background: var(--border-light);
             margin: 0.8rem 0;
         }
 
         .resource-item {
             font-size: 0.8rem;
-            color: #5a6e7e;
+            color: var(--text-muted);
             margin-bottom: 0.4rem;
-            line-height: 1.4;
             padding-left: 0.5rem;
-            border-left: 2px solid #eef2f8;
+            border-left: 2px solid var(--border-light);
         }
 
             .resource-item strong {
-                color: #1a3b5d;
-                font-weight: 600;
+                color: var(--primary-dark);
             }
-
-        .sub-items {
-            margin-top: 0.5rem;
-        }
-
-        .sub-item {
-            font-size: 0.75rem;
-            color: #8ba0b0;
-            margin-top: 0.3rem;
-            padding-left: 0.5rem;
-        }
-
-        @media (max-width: 768px) {
-            header.container {
-                flex-direction: column;
-                text-align: center;
-                padding: 1rem 3%;
-            }
-
-            .main-menu ul {
-                justify-content: center;
-            }
-
-            .content {
-                padding: 1.5rem;
-            }
-
-            .page-title {
-                font-size: 1.8rem;
-            }
-
-            .resources-grid {
-                grid-template-columns: 1fr;
-                gap: 1rem;
-            }
-        }
     </style>
 </head>
 <body>
     <div class="wrapper">
         <header class="container">
-            <div class="logo">
-                <img src="img/logo.svg" alt="Логотип Московский Политех" />
-            </div>
+            <div class="logo"><img src="img/logo.svg" alt="Логотип Московский Политех" /></div>
             <nav class="main-menu">
                 <ul>
                     <li><a href="index.html">Главная</a></li>
                     <li><a href="o-proekte.html">О проекте</a></li>
                     <li><a href="uchastniki.html">Участники проекта</a></li>
                     <li><a href="journal.html">Журнал прогресса</a></li>
-                    <li><a href="resources.html">Ресурсы проекта</a></li>
+                    <li><a href="resources.html" class="active">Ресурсы проекта</a></li>
+                    <li><a href="practical.html">Часть 2.2 Реализация технологии с нуля</a></li>
                 </ul>
             </nav>
         </header>
 
         <main class="content">
-            <div class="resources-container">
-                <h1 class="page-title"> Ресурсы проекта</h1>
+            <div style="max-width:1280px; margin:0 auto;">
+                <h1 class="page-title">Ресурсы проекта</h1>
                 <div class="resources-grid">
-
-                    <!-- Организации-партнёры -->
-                    <div class="resource-card">
-                        <div class="resource-icon">🤝</div>
-                        <h3>Организации-партнёры</h3>
-                        <p>Служба психологической помощи Московского Политеха — заказчик проекта</p>
-                        <div class="resource-divider"></div>
-                        <div class="resource-item"><strong>•</strong> Московский Политех (официальный сайт)</div>
-                        <div class="sub-items">
-                            <div class="sub-item">• Служба психологической помощи СПП</div>
-                        </div>
-                    </div>
-
-                    <!-- Использованные статьи и исследования -->
-                    <div class="resource-card">
-                        <div class="resource-icon">📄</div>
-                        <h3>Использованные статьи</h3>
-                        <p>Анализ существующих аналогов и лучшие практики</p>
-                        <div class="resource-divider"></div>
-                        <div class="resource-item"><strong>•</strong> Анализ современных конструкторов сайтов</div>
-                        <div class="resource-item"><strong>•</strong> Рейтинг CMS для сайтов психологической помощи</div>
-                        <div class="resource-item"><strong>•</strong> Инновации и новые технологии в разработке сайтов</div>
-                        <div class="resource-item"><strong>•</strong> Потенциал социальной рекламы на сайтах вузов</div>
-                    </div>
-
-                    <!-- Онлайн-курсы для команды -->
-                    <div class="resource-card">
-                        <div class="resource-icon">🎓</div>
-                        <h3>Онлайн-курсы</h3>
-                        <p>Обучение команды проекта</p>
-                        <div class="resource-divider"></div>
-                        <div class="resource-item"><strong>•</strong> Курс по информационной безопасности для веб-разработчиков</div>
-                        <div class="resource-item"><strong>•</strong> Автоматизация веб-тестирования (Jest, Selenium)</div>
-                        <div class="resource-item"><strong>•</strong> React + TypeScript — продвинутый уровень</div>
-                        <div class="resource-item"><strong>•</strong> Django REST Framework — создание API</div>
-                    </div>
-
-                    <!-- Техническая документация -->
-                    <div class="resource-card">
-                        <div class="resource-icon">📖</div>
-                        <h3>Документация проекта</h3>
-                        <p>Внутренние и пользовательские документы</p>
-                        <div class="resource-divider"></div>
-                        <div class="resource-item"><strong>•</strong> Техническое задание (ТЗ) для отделов разработки</div>
-                        <div class="resource-item"><strong>•</strong> Пояснительная записка к проекту</div>
-                        <div class="resource-item"><strong>•</strong> Инструкция для психолога по работе с данными</div>
-                        <div class="resource-item"><strong>•</strong> Памятка по автоматизации работы сайта</div>
-                    </div>
-
-                    <!-- Политики безопасности -->
-                    <div class="resource-card">
-                        <div class="resource-icon">🔒</div>
-                        <h3>Политики ИБ</h3>
-                        <p>Документы информационной безопасности</p>
-                        <div class="resource-divider"></div>
-                        <div class="resource-item"><strong>•</strong> Политика конфиденциальности</div>
-                        <div class="resource-item"><strong>•</strong> Политика обработки файлов cookie</div>
-                        <div class="resource-item"><strong>•</strong> Политика хранения и уничтожения персональных данных</div>
-                        <div class="resource-item"><strong>•</strong> Политика допустимого использования</div>
-                        <div class="resource-item"><strong>•</strong> Политика раскрытия уязвимостей (для белых хакеров)</div>
-                        <div class="resource-item"><strong>•</strong> Публичная оферта сайта СПП</div>
-                    </div>
-
-                    <!-- Инструменты разработки -->
-                    <div class="resource-card">
-                        <div class="resource-icon">🛠️</div>
-                        <h3>Инструменты разработки</h3>
-                        <p>Технологический стек проекта</p>
-                        <div class="resource-divider"></div>
-                        <div class="resource-item"><strong>•</strong> GitHub — репозиторий проекта</div>
-                        <div class="resource-item"><strong>•</strong> Figma — дизайн-макеты и прототипы</div>
-                        <div class="resource-item"><strong>•</strong> Postman — коллекция тестов API</div>
-                        <div class="resource-item"><strong>•</strong> Swagger — документация API</div>
-                    </div>
-
-                    <!-- Законодательная база -->
-                    <div class="resource-card">
-                        <div class="resource-icon">⚖️</div>
-                        <h3>Нормативно-правовая база</h3>
-                        <p>Регуляторные документы</p>
-                        <div class="resource-divider"></div>
-                        <div class="resource-item"><strong>•</strong> ФЗ «О персональных данных» №152-ФЗ</div>
-                        <div class="resource-item"><strong>•</strong> ФЗ «Об информации» №149-ФЗ</div>
-                        <div class="resource-item"><strong>•</strong> ГОСТы по технической документации</div>
-                        <div class="resource-item"><strong>•</strong> Анализ законодательства о социальной рекламе</div>
-                    </div>
-
-                    <!-- Результаты исследований -->
-                    <div class="resource-card">
-                        <div class="resource-icon">📊</div>
-                        <h3>Аналитика и отчёты</h3>
-                        <p>Результаты опросов и исследований</p>
-                        <div class="resource-divider"></div>
-                        <div class="resource-item"><strong>•</strong> Опрос студентов: удобный способ записи (n=62)</div>
-                        <div class="resource-item"><strong>•</strong> Анализ информированности о службе СПП</div>
-                        <div class="resource-item"><strong>•</strong> Карта пути пользователя и психолога</div>
-                        <div class="resource-item"><strong>•</strong> Сравнительный анализ конструкторов сайтов</div>
-                    </div>
-
-                    <!-- Внешние сервисы -->
-                    <div class="resource-card">
-                        <div class="resource-icon">🌐</div>
-                        <h3>Внешние сервисы</h3>
-                        <p>Полезные ссылки для пользователей</p>
-                        <div class="resource-divider"></div>
-                        <div class="resource-item"><strong>•</strong> Группа ВКонтакте «Психологическая помощь Мосполитех»</div>
-                        <div class="resource-item"><strong>•</strong> Хостинг проекта (информация)</div>
-                    </div>
-
+                    <div class="resource-card"><div class="resource-icon">🤝</div><h3>Организации-партнёры</h3><p>Служба психологической помощи Московского Политеха</p><div class="resource-divider"></div><div class="resource-item"><strong>•</strong> Московский Политех (официальный сайт)</div></div>
+                    <div class="resource-card"><div class="resource-icon">📄</div><h3>Использованные статьи</h3><div class="resource-item"><strong>•</strong> Анализ современных конструкторов сайтов</div><div class="resource-item"><strong>•</strong> Инновации в веб-разработке</div></div>
+                    <div class="resource-card"><div class="resource-icon">🎓</div><h3>Онлайн-курсы</h3><div class="resource-item"><strong>•</strong> ИБ для веб-разработчиков</div><div class="resource-item"><strong>•</strong> React + TypeScript</div><div class="resource-item"><strong>•</strong> Django REST Framework</div></div>
+                    <div class="resource-card"><div class="resource-icon">📖</div><h3>Документация</h3><div class="resource-item"><strong>•</strong> Техническое задание</div><div class="resource-item"><strong>•</strong> Пояснительная записка</div><div class="resource-item"><strong>•</strong> Памятка по автоматизации</div></div>
+                    <div class="resource-card"><div class="resource-icon">🔒</div><h3>Политики ИБ</h3><div class="resource-item"><strong>•</strong> Политика конфиденциальности</div><div class="resource-item"><strong>•</strong> Политика cookies</div><div class="resource-item"><strong>•</strong> Публичная оферта</div></div>
+                    <div class="resource-card"><div class="resource-icon">🛠️</div><h3>Инструменты разработки</h3><div class="resource-item"><strong>•</strong> GitHub</div><div class="resource-item"><strong>•</strong> Figma</div><div class="resource-item"><strong>•</strong> Postman, Swagger</div></div>
                 </div>
             </div>
         </main>
