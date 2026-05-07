@@ -6,112 +6,29 @@
     <title>Журнал прогресса — Московский Политех</title>
     <link rel="stylesheet" href="css/main.css" />
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Inter', system-ui, -apple-system, 'Helvetica Neue', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-            background-color: #ffffff;
-            line-height: 1.5;
-        }
-
-        .wrapper {
-            width: 100%;
-            min-height: 100vh;
-        }
-
-        /* Шапка */
-        header.container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem 5%;
-            border-bottom: 1px solid #eee;
-            flex-wrap: wrap;
-            gap: 1rem;
-            background: #ffffff;
-        }
-
-        .logo {
-            display: flex;
-            gap: 0.5rem;
-            align-items: center;
-        }
-
-            .logo img {
-                max-height: 60px;
-                width: auto;
-            }
-
-        .main-menu ul {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-            flex-wrap: wrap;
-        }
-
-        .main-menu a {
-            font-weight: 400;
-            transition: color 0.3s;
-            text-decoration: none;
-            color: #000000;
-        }
-
-            .main-menu a:hover {
-                color: #3498db;
-            }
-
-        .content {
-            padding: 2rem 5%;
-        }
-
-        .journal-container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .page-title {
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 2rem;
-            background: linear-gradient(135deg, #1a3b5d, #2c5a7a);
-            background-clip: text;
-            -webkit-background-clip: text;
-            color: transparent;
-            border-left: 6px solid #4c9fcf;
-            padding-left: 1.25rem;
-        }
-
-        /* Секция отдела */
+        /* Стили только для страницы журнала */
         .department-section {
             margin-bottom: 2.5rem;
             background: #ffffff;
             border-radius: 1.5rem;
             border: 1px solid #eef2f8;
             overflow: hidden;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02), 0 4px 12px rgba(0, 0, 0, 0.03);
+            box-shadow: var(--shadow-sm);
         }
 
         .department-header {
             padding: 1.2rem 1.8rem;
             background: linear-gradient(135deg, #f0f6fb, #ffffff);
-            border-bottom: 3px solid #4c9fcf;
+            border-bottom: 3px solid var(--primary-light);
         }
 
         .department-title {
             font-size: 1.4rem;
             font-weight: 700;
-            color: #1a3b5d;
+            color: var(--primary-dark);
             display: flex;
             align-items: center;
             gap: 0.75rem;
-        }
-
-        .department-icon {
-            font-size: 1.8rem;
         }
 
         .department-desc {
@@ -119,14 +36,13 @@
             background: #f9fbfd;
             border-bottom: 1px solid #eef2f8;
             font-size: 0.9rem;
-            color: #5a6e7e;
+            color: var(--text-muted);
         }
 
             .department-desc strong {
-                color: #1a3b5d;
+                color: var(--primary-dark);
             }
 
-        /* Таблица задач — унифицированная ширина колонок */
         .tasks-table {
             width: 100%;
             table-layout: fixed;
@@ -134,7 +50,6 @@
             font-size: 0.85rem;
         }
 
-            /* Фиксированная ширина колонок для единообразия */
             .tasks-table th:nth-child(1) {
                 width: 30%;
             }
@@ -159,7 +74,7 @@
                 text-align: left;
                 padding: 0.8rem 1rem;
                 background: #f8fafd;
-                color: #4c9fcf;
+                color: var(--primary-light);
                 font-weight: 600;
                 border-bottom: 1px solid #eef2f8;
             }
@@ -167,7 +82,7 @@
             .tasks-table td {
                 padding: 0.8rem 1rem;
                 border-bottom: 1px solid #f0f4f8;
-                color: #2c3e50;
+                color: var(--text-dark);
                 vertical-align: top;
                 word-wrap: break-word;
             }
@@ -202,24 +117,9 @@
             white-space: nowrap;
         }
 
-        /* Медиазапросы для адаптивности */
         @media (max-width: 768px) {
-            header.container {
-                flex-direction: column;
-                text-align: center;
-                padding: 1rem 3%;
-            }
-
-            .main-menu ul {
-                justify-content: center;
-            }
-
-            .content {
-                padding: 1.5rem;
-            }
-
-            .page-title {
-                font-size: 1.8rem;
+            .department-header {
+                padding: 1rem;
             }
 
             .tasks-table th,
@@ -227,26 +127,6 @@
                 padding: 0.5rem;
                 font-size: 0.7rem;
             }
-
-                .tasks-table th:nth-child(1) {
-                    width: 28%;
-                }
-
-                .tasks-table th:nth-child(2) {
-                    width: 22%;
-                }
-
-                .tasks-table th:nth-child(3) {
-                    width: 16%;
-                }
-
-                .tasks-table th:nth-child(4) {
-                    width: 18%;
-                }
-
-                .tasks-table th:nth-child(5) {
-                    width: 16%;
-                }
 
             .status-badge {
                 white-space: normal;
@@ -266,15 +146,16 @@
                     <li><a href="index.html">Главная</a></li>
                     <li><a href="o-proekte.html">О проекте</a></li>
                     <li><a href="uchastniki.html">Участники проекта</a></li>
-                    <li><a href="journal.html">Журнал прогресса</a></li>
+                    <li><a href="journal.html" class="active">Журнал прогресса</a></li>
                     <li><a href="resources.html">Ресурсы проекта</a></li>
+                    <li><a href="practical.html">Часть 2.2 Реализация технологии с нуля</a></li>
                 </ul>
             </nav>
         </header>
 
         <main class="content">
-            <div class="journal-container">
-                <h1 class="page-title"> Журнал прогресса (представлена лишь часть задач) </h1>
+            <div class="journal-container" style="max-width: 1280px; margin: 0 auto;">
+                <h1 class="page-title">Журнал прогресса (представлена лишь часть задач)</h1>
 
                 <!-- ==================== АНАЛИТИКА ==================== -->
                 <div class="department-section">
@@ -489,62 +370,14 @@
                             <tr><th>Задача</th><th>Исполнитель</th><th>Статус</th><th>Сроки</th><th>Оценка</th></tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>Политика конфиденциальности</td>
-                                <td>Пацев Максим</td>
-                                <td><span class="status-badge status-done">✅ Выполнено</span></td>
-                                <td>06.04.26 - 20.04.26</td>
-                                <td class="rating-stars">★★★★★</td>
-                            </tr>
-                            <tr>
-                                <td>Политика обработки файлов cookie</td>
-                                <td>Садыков Ростислав</td>
-                                <td><span class="status-badge status-done">✅ Выполнено</span></td>
-                                <td>06.04.26 - 13.04.26</td>
-                                <td class="rating-stars">★★★★☆</td>
-                            </tr>
-                            <tr>
-                                <td>Политика допустимого использования</td>
-                                <td>Корвяков Святогор</td>
-                                <td><span class="status-badge status-done">✅ Выполнено</span></td>
-                                <td>20.04.26 - 27.04.26</td>
-                                <td class="rating-stars">★★☆☆☆</td>
-                            </tr>
-                            <tr>
-                                <td>Политика раскрытия уязвимостей</td>
-                                <td>Корвяков Святогор</td>
-                                <td><span class="status-badge status-done">✅ Выполнено</span></td>
-                                <td>20.04.26 - 27.04.26</td>
-                                <td class="rating-stars">★★☆☆☆</td>
-                            </tr>
-                            <tr>
-                                <td>Анализ уязвимостей бэкенда и фронтенда</td>
-                                <td>Судник Владислав</td>
-                                <td><span class="status-badge status-done">✅ Выполнено</span></td>
-                                <td>01.04.26 - 06.04.26</td>
-                                <td class="rating-stars">★☆☆☆☆</td>
-                            </tr>
-                            <tr>
-                                <td>Анализ законодательства о социальной рекламе</td>
-                                <td>Судник Владислав</td>
-                                <td><span class="status-badge status-done">✅ Выполнено</span></td>
-                                <td>10.04.26 - 26.04.26</td>
-                                <td class="rating-stars">★★☆☆☆</td>
-                            </tr>
-                            <tr>
-                                <td>Публичная оферта сайта СПП</td>
-                                <td>Садыков Ростислав</td>
-                                <td><span class="status-badge status-done">✅ Выполнено</span></td>
-                                <td>13.04.26 - 20.04.26</td>
-                                <td class="rating-stars">★★★☆☆</td>
-                            </tr>
-                            <tr>
-                                <td>Памятка по автоматизации работы сайта</td>
-                                <td>Усачев Тимофей</td>
-                                <td><span class="status-badge status-done">✅ Выполнено</span></td>
-                                <td>13.04.26 - 20.04.26</td>
-                                <td class="rating-stars">★★★★☆</td>
-                            </tr>
+                            <tr><td>Политика конфиденциальности</td><td>Пацев Максим</td><td><span class="status-badge status-done">✅ Выполнено</span></td><td>06.04.26 - 20.04.26</td><td class="rating-stars">★★★★★</td></tr>
+                            <tr><td>Политика обработки файлов cookie</td><td>Садыков Ростислав</td><td><span class="status-badge status-done">✅ Выполнено</span></td><td>06.04.26 - 13.04.26</td><td class="rating-stars">★★★★☆</td></tr>
+                            <tr><td>Политика допустимого использования</td><td>Корвяков Святогор</td><td><span class="status-badge status-done">✅ Выполнено</span></td><td>20.04.26 - 27.04.26</td><td class="rating-stars">★★☆☆☆</td></tr>
+                            <tr><td>Политика раскрытия уязвимостей</td><td>Корвяков Святогор</td><td><span class="status-badge status-done">✅ Выполнено</span></td><td>20.04.26 - 27.04.26</td><td class="rating-stars">★★☆☆☆</td></tr>
+                            <tr><td>Анализ уязвимостей бэкенда и фронтенда</td><td>Судник Владислав</td><td><span class="status-badge status-done">✅ Выполнено</span></td><td>01.04.26 - 06.04.26</td><td class="rating-stars">★☆☆☆☆</td></tr>
+                            <tr><td>Анализ законодательства о социальной рекламе</td><td>Судник Владислав</td><td><span class="status-badge status-done">✅ Выполнено</span></td><td>10.04.26 - 26.04.26</td><td class="rating-stars">★★☆☆☆</td></tr>
+                            <tr><td>Публичная оферта сайта СПП</td><td>Садыков Ростислав</td><td><span class="status-badge status-done">✅ Выполнено</span></td><td>13.04.26 - 20.04.26</td><td class="rating-stars">★★★☆☆</td></tr>
+                            <tr><td>Памятка по автоматизации работы сайта</td><td>Усачев Тимофей</td><td><span class="status-badge status-done">✅ Выполнено</span></td><td>13.04.26 - 20.04.26</td><td class="rating-stars">★★★★☆</td></tr>
                         </tbody>
                     </table>
                 </div>
@@ -565,48 +398,12 @@
                             <tr><th>Задача</th><th>Исполнитель</th><th>Статус</th><th>Сроки</th><th>Оценка</th></tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>Руководство отделом</td>
-                                <td>Фарафонов Максим</td>
-                                <td><span class="status-badge status-done">✅ Выполнено</span></td>
-                                <td>02.02.26 - 12.03.26</td>
-                                <td class="rating-stars">★★★★☆</td>
-                            </tr>
-                            <tr>
-                                <td>Обсуждение трудностей и неудобств СПП при записи через ВК</td>
-                                <td>Фарафонов Максим</td>
-                                <td><span class="status-badge status-done">✅ Выполнено</span></td>
-                                <td>23.02.26 - 02.03.26</td>
-                                <td class="rating-stars">★★★★☆</td>
-                            </tr>
-                            <tr>
-                                <td>Обсуждение медиа-проектов</td>
-                                <td>Фарафонов Максим</td>
-                                <td><span class="status-badge status-done">✅ Выполнено</span></td>
-                                <td>02.03.26 - 09.03.26</td>
-                                <td class="rating-stars">★★★★☆</td>
-                            </tr>
-                            <tr>
-                                <td>Запрос актуальности проекта у СПП</td>
-                                <td>Фарафонов Максим</td>
-                                <td><span class="status-badge status-done">✅ Выполнено</span></td>
-                                <td>02.03.26 - 09.03.26</td>
-                                <td class="rating-stars">★★★★☆</td>
-                            </tr>
-                            <tr>
-                                <td>Обсуждение деталей интервью с сотрудником СПП</td>
-                                <td>Фарафонов Максим</td>
-                                <td><span class="status-badge status-done">✅ Выполнено</span></td>
-                                <td>02.03.26 - 09.03.26</td>
-                                <td class="rating-stars">★★★★☆</td>
-                            </tr>
-                            <tr>
-                                <td>Обсуждение с СПП возможности добавления новостей на сайт</td>
-                                <td>Фарафонов Максим</td>
-                                <td><span class="status-badge status-done">✅ Выполнено</span></td>
-                                <td>02.03.26 - 09.03.26</td>
-                                <td class="rating-stars">★★★★☆</td>
-                            </tr>
+                            <tr><td>Руководство отделом</td><td>Фарафонов Максим</td><td><span class="status-badge status-done">✅ Выполнено</span></td><td>02.02.26 - 12.03.26</td><td class="rating-stars">★★★★☆</td></tr>
+                            <tr><td>Обсуждение трудностей и неудобств СПП при записи через ВК</td><td>Фарафонов Максим</td><td><span class="status-badge status-done">✅ Выполнено</span></td><td>23.02.26 - 02.03.26</td><td class="rating-stars">★★★★☆</td></tr>
+                            <tr><td>Обсуждение медиа-проектов</td><td>Фарафонов Максим</td><td><span class="status-badge status-done">✅ Выполнено</span></td><td>02.03.26 - 09.03.26</td><td class="rating-stars">★★★★☆</td></tr>
+                            <tr><td>Запрос актуальности проекта у СПП</td><td>Фарафонов Максим</td><td><span class="status-badge status-done">✅ Выполнено</span></td><td>02.03.26 - 09.03.26</td><td class="rating-stars">★★★★☆</td></tr>
+                            <tr><td>Обсуждение деталей интервью с сотрудником СПП</td><td>Фарафонов Максим</td><td><span class="status-badge status-done">✅ Выполнено</span></td><td>02.03.26 - 09.03.26</td><td class="rating-stars">★★★★☆</td></tr>
+                            <tr><td>Обсуждение с СПП возможности добавления новостей на сайт</td><td>Фарафонов Максим</td><td><span class="status-badge status-done">✅ Выполнено</span></td><td>02.03.26 - 09.03.26</td><td class="rating-stars">★★★★☆</td></tr>
                         </tbody>
                     </table>
                 </div>
