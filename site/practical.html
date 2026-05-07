@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Практическая реализация — HTTP-сервер «Машина аффирмаций»</title>
+    <link rel="stylesheet" href="css/main.css" />
+    <style>
+        /* Дополнительные стили для оформления кода и иллюстраций */
+        .tech-container {
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        .tech-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            background: linear-gradient(135deg, #1a3b5d, #2c5a7a);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            border-left: 6px solid #4c9fcf;
+            padding-left: 1.25rem;
+        }
+
+        .tech-section {
+            background: #ffffff;
+            border-radius: 1.5rem;
+            padding: 1.5rem 2rem;
+            margin-bottom: 2rem;
+            border: 1px solid #eef2f8;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+        }
+
+        .tech-section h2 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: #1a3b5d;
+            margin-bottom: 1rem;
+            border-left: 4px solid #4c9fcf;
+            padding-left: 0.75rem;
+        }
+
+        .tech-section h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin: 1.2rem 0 0.8rem 0;
+            color: #2c5a7a;
+        }
+
+        .tech-section p {
+            margin-bottom: 1rem;
+            line-height: 1.6;
+            color: #1e2f3a;
+        }
+
+        .tech-section pre {
+            background: #f8fafd;
+            border-radius: 1rem;
+            padding: 1rem;
+            overflow-x: auto;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.85rem;
+            border: 1px solid #e2e8f0;
+            margin: 1rem 0;
+        }
+
+        .tech-section code {
+            font-family: 'Fira Code', monospace;
+            background: #f0f4f8;
+            padding: 0.2rem 0.4rem;
+            border-radius: 6px;
+            font-size: 0.9rem;
+        }
+
+        /* Улучшенная сетка для скриншотов */
+        .image-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            justify-content: center;
+            margin: 2rem 0;
+        }
+
+        .image-card {
+            flex: 1;
+            min-width: 300px;
+            background: #f9fbfd;
+            border-radius: 1.2rem;
+            padding: 1rem;
+            text-align: center;
+            border: 1px solid #e2e8f0;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .image-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+        }
+
+        .image-card a {
+            display: block;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .image-card img {
+            width: 100%;
+            height: auto;
+            max-height: 280px;
+            object-fit: contain;
+            background: #f1f5f9;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            transition: opacity 0.2s;
+            border: 1px solid #cbd5e1;
+        }
+
+        .image-card img:hover {
+            opacity: 0.95;
+        }
+
+        .image-caption {
+            margin-top: 0.75rem;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: #1e3a5f;
+            background: #eef2ff30;
+            display: inline-block;
+            padding: 0.2rem 0.8rem;
+            border-radius: 2rem;
+        }
+
+        .image-description {
+            font-size: 0.8rem;
+            color: #5a6e7e;
+            margin-top: 0.4rem;
+        }
+
+        /* Стили для модального окна (опционально) */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.9);
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-content {
+            margin: auto;
+            display: block;
+            max-width: 90%;
+            max-height: 90%;
+            border-radius: 1rem;
+            box-shadow: 0 0 20px rgba(0,0,0,0.5);
+        }
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 35px;
+            color: #fff;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .close-modal:hover {
+            color: #bbb;
+        }
+
+        @media (max-width: 768px) {
+            .tech-section {
+                padding: 1rem;
+            }
+            .tech-title {
+                font-size: 1.8rem;
+            }
+            .tech-section h2 {
+                font-size: 1.4rem;
+            }
+            .image-card {
+                min-width: 260px;
+            }
+        }
+
+        /* Убираем смайлики из списка модификаций */
+        .modification-list {
+            list-style: none;
+            padding-left: 0;
+        }
+        .modification-list li {
+            margin-bottom: 0.75rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+        /* Псевдоэлемент со смайликом удалён */
+    </style>
+</head>
+<body>
+<div class="wrapper">
+    <header class="container">
+        <div class="logo">
+            <img src="img/logo.svg" alt="Логотип Московский Политех" />
+        </div>
+        <nav class="main-menu">
+            <ul>
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="o-proekte.html">О проекте</a></li>
+                <li><a href="uchastniki.html">Участники проекта</a></li>
+                <li><a href="journal.html">Журнал прогресса</a></li>
+                <li><a href="resources.html">Ресурсы проекта</a></li>
+                <li><a href="practical.html" style="color: #4c9fcf; font-weight: 600;">Часть 2.2 Реализация технологии с нуля</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="content">
+        <div class="tech-container">
+            <h1 class="tech-title">Практическая реализация технологии «с нуля»</h1>
+            <p style="margin-bottom: 2rem; font-size: 1.1rem;">
+                Данное руководство описывает процесс создания одностраничного веб‑приложения на «голом» Python (без фреймворков), которое раздаёт персонализированные аффирмации. В основе лежит кастомный HTTP‑сервер, написанный с использованием встроенной библиотеки socket. Сверх базового HTTP‑сервера добавлена Машина аффирмаций.
+            </p>
+
+            <!-- 1. Архитектура -->
+            <div class="tech-section">
+                <h2>📐 Архитектура решения</h2>
+                <p>Проект состоит из следующих логических блоков:</p>
+                <ul style="margin-left: 1.5rem; margin-bottom: 1rem;">
+                    <li><strong>Сокет‑сервер</strong> — принимает TCP‑соединения, читает сырой HTTP‑запрос.</li>
+                    <li><strong>Маршрутизатор</strong> (<code>handle_request</code>) — определяет, какой ресурс запрошен (<code>/</code>, <code>/next-affirmation</code>, статика).</li>
+                    <li><strong>Менеджер аффирмаций</strong> (<code>AffirmationManager</code>) — управляет очередью уникальных фраз, исключая повторения.</li>
+                    <li><strong>Генератор HTML</strong> (<code>generate_html</code>) — встраивает текущую аффирмацию в готовый шаблон.</li>
+                    <li><strong>Клиентский JavaScript</strong> — асинхронно обновляет контент без перезагрузки страницы.</li>
+                </ul>
+                <div class="image-grid">
+                    <div class="image-card">
+                        <a href="https://github.com/user-attachments/assets/559ad9ee-744d-4705-9951-34f8914113a2" target="_blank" onclick="event.preventDefault(); openModal(this.href)">
+                            <img src="https://github.com/user-attachments/assets/559ad9ee-744d-4705-9951-34f8914113a2" 
+                                 alt="UML диаграмма классов"
+                                 onerror="this.onerror=null; this.src='data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22400%22%20height%3D%22200%22%3E%3Crect%20width%3D%22400%22%20height%3D%22200%22%20fill%3D%22%23eef2f8%22%2F%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2250%25%22%20text-anchor%3D%22middle%22%3E%D0%94%D0%B8%D0%B0%D0%B3%D1%80%D0%B0%D0%BC%D0%BC%D0%B0%20%D0%BA%D0%BB%D0%B0%D1%81%D1%81%D0%BE%D0%B2%20(UML)%3C%2Ftext%3E%3C%2Fsvg%3E'; this.alt='Диаграмма классов не загрузилась';">
+                        </a>
+                        <div class="image-caption">📊 UML Диаграмма классов</div>
+                        <div class="image-description">Структура сервера, менеджера аффирмаций и их взаимосвязи</div>
+                    </div>
+                    <div class="image-card">
+                        <a href="https://github.com/user-attachments/assets/336e78b8-7652-4a2b-b56b-6fd774eab5b2" target="_blank" onclick="event.preventDefault(); openModal(this.href)">
+                            <img src="https://github.com/user-attachments/assets/336e78b8-7652-4a2b-b56b-6fd774eab5b2" 
+                                 alt="Диаграмма последовательности"
+                                 onerror="this.onerror=null; this.src='data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22400%22%20height%3D%22200%22%3E%3Crect%20width%3D%22400%22%20height%3D%22200%22%20fill%3D%22%23eef2f8%22%2F%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2250%25%22%20text-anchor%3D%22middle%22%3E%D0%94%D0%B8%D0%B0%D0%B3%D1%80%D0%B0%D0%BC%D0%BC%D0%B0%20%D0%BF%D0%BE%D1%81%D0%BB%D0%B5%D0%B4%D0%BE%D0%B2%D0%B0%D1%82%D0%B5%D0%BB%D1%8C%D0%BD%D0%BE%D1%81%D1%82%D0%B8%3C%2Ftext%3E%3C%2Fsvg%3E';">
+                        </a>
+                        <div class="image-caption">🔄 Диаграмма последовательности</div>
+                        <div class="image-description">AJAX-взаимодействие: клиент → сервер → обновление аффирмации</div>
+                    </div>
+                    <div class="image-card">
+                        <a href="https://github.com/user-attachments/assets/13703c2d-eaf7-42cf-ac78-3fb7470f5f21" target="_blank" onclick="event.preventDefault(); openModal(this.href)">
+                            <img src="https://github.com/user-attachments/assets/13703c2d-eaf7-42cf-ac78-3fb7470f5f21" 
+                                 alt="Скриншот работы"
+                                 onerror="this.onerror=null; this.src='data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22400%22%20height%3D%22200%22%3E%3Crect%20width%3D%22400%22%20height%3D%22200%22%20fill%3D%22%23eef2f8%22%2F%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2250%25%22%20text-anchor%3D%22middle%22%3E%D0%A1%D0%BA%D1%80%D0%B8%D0%BD%D1%88%D0%BE%D1%82%20%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D1%8B%20%D1%81%D0%B5%D1%80%D0%B2%D0%B5%D1%80%D0%B0%3C%2Ftext%3E%3C%2Fsvg%3E';">
+                        </a>
+                        <div class="image-caption">🖥️ Скриншот работающего сервера</div>
+                        <div class="image-description">Внешний вид страницы с активной аффирмацией, счётчиком и кнопкой</div>
+                    </div>
+                </div>
+                <p style="font-size:0.85rem; text-align:center; margin-top:0.5rem;">💡 <em>Кликните на любое изображение, чтобы открыть его в полном размере. Иображения загружаются напрямую с Github, поэтому из-за отсутствия интернет-соединения могут быть недоступны</em></p>
+            </div>
+
+            <!-- Остальные секции без изменений (только для полноты) -->
+            <div class="tech-section">
+                <h2>🔧 Пошаговое создание с нуля</h2>
+
+                <h3>Шаг 1: HTTP‑сервер на сокетах</h3>
+                <pre><code>import socket
+
+server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+server.bind(('localhost', 8080))
+server.listen(5)
+print("Сервер на http://localhost:8080")
+
+while True:
+    client, addr = server.accept()
+    request = client.recv(4096).decode('utf-8', errors='ignore')
+    response = handle_request(request)
+    client.sendall(response.encode() if isinstance(response, str) else response)
+    client.close()</code></pre>
+
+                <h3>Шаг 2: Маршрутизация запросов</h3>
+                <p>Функция <code>handle_request()</code> парсит URI и возвращает соответствующий контент (HTML, JSON, SVG или 404).</p>
+
+                <h3>Шаг 3: Генерация HTML-страницы</h3>
+                <p>Шаблон встраивает текущую аффирмацию и счётчик. Кнопка вызывает JavaScript-функцию <code>refreshAffirmation()</code>.</p>
+
+                <h3>Шаг 4: Логика аффирмаций без повторов</h3>
+                <pre><code>class AffirmationManager:
+    def get_next(self):
+        if not self.remaining:
+            self.remaining = [a for a in self.original_list if a not in self.history]
+            random.shuffle(self.remaining)
+        next_aff = self.remaining.pop(0)
+        self.history.append(next_aff)
+        return next_aff</code></pre>
+
+                <h3>Шаг 5: AJAX-эндпоинт <code>/next-affirmation</code></h3>
+                <p>Возвращает JSON с новой аффирмацией и обновлённой статистикой. Клиент обновляет DOM без перезагрузки.</p>
+
+                <h3>Шаг 6: Раздача статических SVG-файлов</h3>
+                <p>Сервер читает файлы <code>logo.svg</code> и <code>hand-help.svg</code> из директории и отдаёт с правильным <code>Content-Type</code>.</p>
+            </div>
+
+            <!-- Модификация: Машина аффирмаций - переписанный раздел без смайликов -->
+            <div class="tech-section">
+                <h2>Модификация: что добавлено сверх базового HTTP‑сервера</h2>
+                <p>Сверх базового HTTP‑сервера добавлена <strong>Машина аффирмаций</strong> — компонент, который обеспечивает интеллектуальную выдачу уникальных аффирмаций, динамическое обновление интерфейса и подсчёт прогресса. Вот её ключевые детали:</p>
+                <ul class="modification-list">
+                    <li><strong>Машина аффирмаций (AffirmationManager)</strong> – управляет очередью уникальных фраз, случайным образом перемешивает оставшиеся аффирмации после каждого цикла и хранит историю просмотренных. Это гарантирует, что ни одна фраза не повторится, пока не будут показаны все.</li>
+                    <li><strong>Динамическое обновление контента (AJAX)</strong> – страница не перезагружается, при обновлении аффирмации добавлена микроанимация.</li>
+                    <li><strong>Визуальный счётчик прогресса</strong> – показывает, сколько уникальных аффирмаций уже просмотрено из общего числа.</li>
+                    <li><strong>Раздача статических SVG-файлов</strong> – корректная обработка изображений с fallback на 404.</li>
+                    <li><strong>Адаптивная вёрстка и дизайн</strong> – градиенты, карточки, тени, медиазапросы под мобильные устройства.</li>
+                    <li><strong>Логирование работы сервера</strong> – вывод в консоль деталей каждого запроса и состояния менеджера аффирмаций.</li>
+                </ul>
+            </div>
+
+            <div class="tech-section">
+                <h2>📄 Полный код HTTP‑сервера</h2>
+                <p>Исходный код находится в файле <code>handle_request.py</code> в репозитории проекта. Ниже приведена основная структура:</p>
+                <pre><code># handle_request.py
+import socket, random, json
+from collections import deque
+
+AFFIRMATIONS = ["Вы делаете лучше...", "Сегодня - хороший день...", ...]
+
+class AffirmationManager:
+    # ... реализация ...
+
+affirmation_manager = AffirmationManager(AFFIRMATIONS)
+
+def generate_html(current, used, total):
+    return f"""&lt;!DOCTYPE html&gt;... (шаблон) ..."""
+
+def handle_request(request):
+    # маршрутизация: /, /next-affirmation, /logo.svg, /hand-help.svg
+    ...
+
+if __name__ == '__main__':
+    server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    server.bind(('localhost', 8080))
+    server.listen(5)
+    print("Сервер запущен на http://localhost:8080")
+    try:
+        while True:
+            client, addr = server.accept()
+            request = client.recv(4096).decode('utf-8', errors='ignore')
+            response = handle_request(request)
+            client.sendall(response.encode() if isinstance(response, str) else response)
+            client.close()
+    except KeyboardInterrupt:
+        server.close()</code></pre>
+                <p> Для запуска скачайте полный код с репозитория,выполните: <code>python handle_request.py</code> и откройте в браузере <code>http://localhost:8080</code>.</p>
+            </div>
+        </div>
+    </main>
+</div>
+
+<!-- Модальное окно для увеличения скриншотов -->
+<div id="imageModal" class="modal" onclick="closeModal()">
+    <span class="close-modal" onclick="closeModal()">&times;</span>
+    <img class="modal-content" id="modalImage" alt="Увеличенное изображение">
+</div>
+
+<script>
+    function openModal(src) {
+        const modal = document.getElementById('imageModal');
+        const modalImg = document.getElementById('modalImage');
+        modal.style.display = "flex";
+        modalImg.src = src;
+        return false;
+    }
+    function closeModal() {
+        document.getElementById('imageModal').style.display = "none";
+    }
+    document.addEventListener('keydown', function(e) {
+        if (e.key === "Escape") {
+            closeModal();
+        }
+    });
+    document.getElementById('modalImage').addEventListener('click', function(e) {
+        e.stopPropagation();
+    });
+</script>
+</body>
+</html>
