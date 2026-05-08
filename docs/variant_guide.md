@@ -1,4 +1,4 @@
-# Техническое руководство: сайт психологической помощи с «Машиной аффирмаций»
+# Техническое руководство: Пошаговое создание  http -сервера с нуля на тему проектной деятельности :"разработка сайта психологической помощи"
 
 Данное руководство описывает процесс создания одностраничного веб‑приложения на «голом» Python (без фреймворков), которое раздаёт персонализированные аффирмации. В основе лежит кастомный HTTP‑сервер, написанный с использованием встроенной библиотеки `socket`.
 
@@ -65,7 +65,7 @@ except KeyboardInterrupt:
     print("Сервер остановлен.")
     server.close()
 ```
-### Шаг 2: Парсинг запроса и маршрутизация
+### Шаг 2: Маршрутизация запросов
 
 Функция `handle_request` извлекает путь из первой строки HTTP-запроса и возвращает соответствующий ответ.
 
@@ -314,7 +314,41 @@ elif path == '/logo.svg':
 ---
 ##  Полный код HTTP-сервера
  Полный код HTTP-сервера находится в [handle_request.py](../src/handle_request.py)
- 
+ Ниже приведена основная структура:
+ ```python
+# handle_request.py
+import socket, random, json
+from collections import deque
+
+AFFIRMATIONS = ["Вы делаете лучше...", "Сегодня - хороший день...", ...]
+
+class AffirmationManager:
+    # ... реализация ...
+
+affirmation_manager = AffirmationManager(AFFIRMATIONS)
+
+def generate_html(current, used, total):
+    return f"""<!DOCTYPE html>... (шаблон) ..."""
+
+def handle_request(request):
+    # маршрутизация: /, /next-affirmation, /logo.svg, /hand-help.svg
+    ...
+
+if __name__ == '__main__':
+    server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    server.bind(('localhost', 8080))
+    server.listen(5)
+    print("Сервер запущен на http://localhost:8080")
+    try:
+        while True:
+            client, addr = server.accept()
+            request = client.recv(4096).decode('utf-8', errors='ignore')
+            response = handle_request(request)
+            client.sendall(response.encode() if isinstance(response, str) else response)
+            client.close()
+    except KeyboardInterrupt:
+        server.close()
+```
  ---
 ## Иллюстрация работы
 
